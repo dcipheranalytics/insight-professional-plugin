@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dcipher": {
+      "type": "http",
+      "url": "https://mcp.dcipheranalytics.com/mcp"
+    }
+  }
+}

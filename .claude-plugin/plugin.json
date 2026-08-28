@@ -1,0 +1,6 @@
+{
+  "name": "dcipher-plugin",
+  "version": "1.0.0",
+  "description": "A plugin for integrating with Dcipher Analytics.",
+  "author": "Dcipher Analytics"
+}
