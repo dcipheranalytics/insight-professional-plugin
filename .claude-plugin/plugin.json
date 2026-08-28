@@ -1,6 +1,17 @@
 {
-  "name": "dcipher-plugin",
-  "version": "1.0.0",
-  "description": "A plugin for integrating with Dcipher Analytics.",
-  "author": "Dcipher Analytics"
+  "name": "dcipher-insight-professional-plugin",
+  "version": "0.1.0",
+  "description": "Business-intelligence skills for the Dcipher Analytics Insight Booster: competitor tracking, horizon scanning, market landscaping, technology scouting, voice-of-customer, narrative monitoring, target screening, regulatory tracking and scenario analysis.",
+  "author": {
+    "name": "Dcipher Analytics",
+    "url": "https://dcipheranalytics.com"
+  },
+  "homepage": "https://help.dcipheranalytics.com/en/articles/16540771-supported-tools",
+  "keywords": [
+    "business-intelligence",
+    "competitive-intelligence",
+    "market-research",
+    "horizon-scanning",
+    "strategic-foresight"
+  ]
 }
