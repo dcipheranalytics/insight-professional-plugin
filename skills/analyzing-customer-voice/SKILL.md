@@ -1,6 +1,6 @@
 ---
 name: analyzing-customer-voice
-description: Analyses customer and user feedback in Dcipher - reviews, support tickets, survey responses, call transcripts, chat logs, community posts and social comments - into themes, complaint clusters, question clusters and issue trends. Use whenever the source material is what customers themselves said, for voice-of-customer, CX insight, churn-driver and product-feedback work. Use monitoring-narratives instead when the interest is media coverage, journalists and public framing rather than customers, and querying-knowledge-bases when the feedback is already in a Dcipher project and the user just wants a question answered.
+description: Analyses customer and user feedback in Dcipher - reviews, support tickets, survey responses, call transcripts, chat logs, community posts and social comments - into themes, complaint clusters, question clusters and issue trends. Use whenever the source material is what customers themselves said, for voice-of-customer, CX insight, churn-driver and product-feedback work. Use monitoring-narratives instead when the interest is media coverage or general social media scanning on a topic rather than customers' own feedback, tracking-customer-accounts when the question is what customer organisations are doing rather than what they say, and querying-knowledge-bases when the feedback is already in a Dcipher project and the user just wants a question answered.
 ---
 
 # Analyzing customer voice

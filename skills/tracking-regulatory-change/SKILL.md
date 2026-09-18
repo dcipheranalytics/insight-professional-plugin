@@ -1,6 +1,6 @@
 ---
 name: tracking-regulatory-change
-description: Tracks regulation, legislation and policy change across named jurisdictions using Dcipher research agents, and produces a regulatory horizon brief or jurisdiction-by-topic matrix with status, timeline and business implications. Use for regulatory affairs, policy monitoring, compliance-horizon and "what is changing in <regulation> across <markets>" questions. Use monitoring-narratives instead when the interest is the public debate and framing around a policy rather than the instruments themselves, and scanning-emerging-trends for technology or market trends rather than regulatory instruments.
+description: Tracks regulation, legislation and policy change across named jurisdictions using Dcipher research agents, and produces a regulatory horizon brief or jurisdiction-by-topic matrix with status, legislative stage, timeline and business implications. Use for regulatory affairs, legislation tracking, policy monitoring, compliance-horizon and "what is changing in <regulation> across <markets>" questions. Use monitoring-narratives instead when the interest is the public debate and framing around a policy rather than the instruments themselves, mapping-stakeholder-ecosystems when the user wants the actors and their positions rather than the rules, and scanning-emerging-trends for technology or market trends rather than regulatory instruments.
 ---
 
 # Tracking regulatory change

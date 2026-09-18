@@ -1,6 +1,6 @@
 ---
 name: screening-acquisition-targets
-description: Builds a screened longlist of acquisition, investment or partnership targets in Dcipher against explicit criteria, researches each candidate in parallel and scores them on a criteria matrix. Use for corporate development, M&A sourcing, investment screening and partner-selection work where the candidate companies are not yet known and need to be found and filtered. Use tracking-competitor-moves instead when the companies are already named and the user wants ongoing monitoring of their activity, and mapping-market-landscapes when the goal is understanding a market's structure rather than producing a ranked target list.
+description: Builds a screened longlist of acquisition, investment or partnership targets in Dcipher against explicit criteria, researches each candidate in parallel and scores them on a criteria matrix. Use for corporate development, M&A sourcing, investment screening and partner-selection work where the candidate companies are not yet known and need to be found and filtered. Use running-due-diligence instead when the target is already chosen and needs investigating in depth, tracking-competitor-moves when the companies are already named and the user wants ongoing monitoring of their activity, and mapping-market-landscapes when the goal is understanding a market's structure rather than producing a ranked target list.
 ---
 
 # Screening acquisition targets

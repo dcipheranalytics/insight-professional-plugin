@@ -1,6 +1,6 @@
 ---
 name: monitoring-narratives
-description: Tracks how a company, brand, policy or issue is being covered and framed in news and social media using Dcipher - the competing narratives, share of voice, which outlets and voices carry them, sentiment drivers, and how coverage shifts over time. Use for communications, PR, public affairs, reputation and crisis-monitoring questions. Use analyzing-customer-voice instead when the source is customers' own feedback rather than media, tracking-competitor-moves when the user wants what competitors did rather than how they are covered, and tracking-regulatory-change when the interest is policy instruments rather than the debate around them.
+description: Scans news and social media in Dcipher and analyses how a company, brand, policy or issue is being covered and framed - the competing narratives, share of voice, which outlets and voices carry them, sentiment drivers, and how coverage shifts over time. Use for media scans, media and social media scanning, coverage digests, and communications, PR, public affairs, reputation and crisis-monitoring questions. Use analyzing-customer-voice instead when the source is customers' own feedback rather than media or public conversation, tracking-competitor-moves when the user wants what competitors did rather than how they are covered, mapping-stakeholder-ecosystems when they want who the actors are rather than what is being said, and tracking-regulatory-change when the interest is policy instruments rather than the debate around them.
 ---
 
 # Monitoring narratives
