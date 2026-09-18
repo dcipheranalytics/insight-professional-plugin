@@ -55,6 +55,27 @@ Expected skill in brackets. The ambiguous set at the end is the real test.
 - "What could the next five years look like for European steel?"
 - "Stress-test our 2030 capacity plan"
 
+**Large-scale research** [`researching-entity-lists`]
+- "I have a list of 180 municipalities - research each one's climate adaptation plan"
+- "Run the same profile across all our suppliers"
+- "For every EU member state, find out how they implemented this directive"
+
+**Due diligence** [`running-due-diligence`]
+- "We're about to sign with this vendor - what should we know?"
+- "Do commercial diligence on Northvolt"
+- "Background research on this company before the board meeting"
+
+**Ecosystem / stakeholder** [`mapping-stakeholder-ecosystems`]
+- "Who are the actors in the EU hydrogen policy arena?"
+- "Map the stakeholders in this debate and where they stand"
+- "Who's doing what in the circular economy space?"
+- "Set up a monthly stakeholder newsletter for this policy area"
+
+**Account intelligence** [`tracking-customer-accounts`]
+- "What's been happening at our top 20 accounts?"
+- "Brief me on this client before tomorrow's QBR"
+- "Flag any of our accounts showing churn risk signals"
+
 **Query** [`querying-knowledge-bases`]
 - "What does our data say about hydrogen pricing?"
 - "Find documents in the Q3 project mentioning Northvolt"
@@ -77,6 +98,10 @@ question. Record which fires. Disagreement here is what the description clauses 
 - "What do we know about Northvolt?"
 - "Give me an overview of sustainable aviation fuel"
 - "Who are the players and what are they doing?"
+- "Research these 40 companies for me"
+- "Tell me everything about Northvolt"
+- "Map this space"
+- "Track these companies for me"  (rivals? customers? unstated - should ask)
 
 ## Quality tests
 

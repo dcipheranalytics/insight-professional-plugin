@@ -1,0 +1,6 @@
+# Internal working documents - kept locally, never published
+docs/review-notes.md
+docs/use-case-longlist.md
+
+.DS_Store
+.deepeval/

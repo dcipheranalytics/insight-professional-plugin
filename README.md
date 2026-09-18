@@ -5,9 +5,10 @@ business-intelligence skills. The connector supplies the tools; these skills sup
 analyst judgement about which tools to chain, with what defaults, and what to do with the
 results.
 
-**Status: draft for internal review.** Nothing here has been evaluated against real
-prompts yet. See [`docs/review-notes.md`](docs/review-notes.md) for the open questions and
-[`CONTRIBUTING.md`](CONTRIBUTING.md) for the authoring workflow.
+**Status: early draft.** The skills are written against the connector's tool schemas but
+have not yet been evaluated against real prompts, so treat the tool chains and defaults as
+proposals rather than documentation. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the
+authoring workflow and [`docs/eval-prompts.md`](docs/eval-prompts.md) for the test set.
 
 ## Design
 
@@ -36,6 +37,10 @@ restated in every skill. Use-case skills point at it with a relative path.
 | `screening-acquisition-targets` | Corporate development | Screened target longlist with criteria matrix | agent KB, matrix |
 | `tracking-regulatory-change` | Policy / regulatory affairs | Regulatory horizon brief by jurisdiction | agent KB over jurisdictions, matrix, radar |
 | `stress-testing-strategy` | Strategy / planning | Scored scenario set with implications | scenario workbench on a radar |
+| `researching-entity-lists` | Research operations | Comparable cited dataset across a list, plus synthesis | agent KB over entity lists, landscape, matrix |
+| `running-due-diligence` | Diligence / corp dev | Evidence pack on one target, red-flag register | agent KB, news KB, matrix, report |
+| `mapping-stakeholder-ecosystems` | Public affairs / ecosystem | Actor map, position matrix, recurring stakeholder digest | agent KB, news KB, landscape, matrix, bump |
+| `tracking-customer-accounts` | Account intelligence / KAM | Account x signal matrix, pre-meeting brief, account digest | agent KB, scheduled news KB, matrix |
 
 ### Role-neutral
 
@@ -65,18 +70,16 @@ skills/
       analyst-standards.md      the quality bar - source adequacy, caveats, delivery
   <one directory per skill>/SKILL.md
 docs/
-  review-notes.md               open questions for the team
   eval-prompts.md               trigger and quality test prompts
 CONTRIBUTING.md
 ```
 
-## Reviewing this draft
+## Reading this repository
 
-Read in this order:
+Start here:
 
-1. `skills/dcipher-mechanics/references/analyst-standards.md` - the quality bar everything
-   else inherits. If this is wrong, everything is wrong.
-2. The description block of all twelve SKILL.md files, **as a set**. Trigger collisions are
-   the main risk and they are only visible when the descriptions are read together.
-3. `docs/review-notes.md` - the specific things we need decided.
-4. One skill body in your own area of expertise, in detail.
+1. `skills/dcipher-mechanics/references/analyst-standards.md` - the quality bar every skill
+   inherits: source adequacy, when to push back, how to caveat, how to deliver.
+2. The description block of every SKILL.md, **as a set**. Trigger collisions are the main
+   design risk and they are only visible when the descriptions are read together.
+3. Any single skill body, for how a use case is actually built.
