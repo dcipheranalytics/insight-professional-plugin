@@ -18,8 +18,8 @@ live in `../dcipher-mechanics/references/`.
 ## Frame
 
 **Which customers, and selected how.** This is the whole validity of the analysis. Review
-sites over-represent the delighted and the furious. Support tickets over-represent people
-who bothered to contact you. Survey responses over-represent the engaged. Whatever the
+sites over-represent the delighted and the furious. Forums over-represent the technically
+engaged. Social comments over-represent whoever is loudest on that platform. Whatever the
 source, name its bias in the deliverable.
 
 **Which decision.** "Understand our customers" produces a word cloud. "Decide what to fix

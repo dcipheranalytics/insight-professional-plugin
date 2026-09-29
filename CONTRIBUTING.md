@@ -42,6 +42,9 @@
 - [ ] Contains real analyst judgement - defaults, push-back conditions, how to read the
       output - not a restatement of what the tools do.
 - [ ] Eval prompts added to `docs/eval-prompts.md` and run.
+- [ ] README kept aligned in the same PR: the skill's Machinery cell, its arrows in the dependency
+      graph, and its row in the knowledge-base matrix. Machinery must match the skill's own
+      definition, and a skill that builds on another inherits that skill's knowledge-base types.
 - [ ] Neighbouring skills re-tested: adding a skill degrades its neighbours' triggering,
       and you only find out if you check.
 

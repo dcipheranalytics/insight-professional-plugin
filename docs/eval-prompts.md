@@ -34,7 +34,7 @@ Expected skill in brackets. The ambiguous set at the end is the real test.
 - "Find research groups working on protein fermentation"
 
 **Customer voice** [`analyzing-customer-voice`]
-- "Analyse these 400 support tickets and tell me what customers are complaining about"
+- "Analyse these 400 support tickets and tell me what customers are complaining about"  (cannot be ingested - should say so in the first exchange and offer the public-source substitute, not scope a project)
 - "What are the main themes in our app store reviews?"
 - "Why are customers churning?"
 
@@ -106,7 +106,7 @@ Expected skill in brackets. The ambiguous set at the end is the real test.
 - "Map this science area and show me where it's thin"
 
 **Generic layer** [`analyzing-content-themes` / `tracking-organisation-signals` / `screening-entities-against-criteria`]
-- "I have 5,000 open-ended survey responses - what's in them?"
+- "I have 5,000 open-ended survey responses - what's in them?"  (cannot be ingested - same expectation)
 - "Analyse these documents and tell me the themes"
 - "Track these organisations for me"  (no relationship stated - should route or ask)
 - "Screen these against our criteria"
@@ -148,6 +148,7 @@ For a fired skill, the output should show these regardless of topic. Score each 
 
 - [ ] Reframed or scoped the brief before building, rather than accepting it verbatim
 - [ ] Checked for an existing project before creating one
+- [ ] Said early that user-owned files cannot be ingested, when the request assumed them
 - [ ] Called `get_search_queries_from_agent` before building a news or social KB
 - [ ] Sampled the KB before analysing it
 - [ ] Checked timestamps before promising anything time-based

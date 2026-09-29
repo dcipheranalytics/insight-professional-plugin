@@ -31,8 +31,9 @@ the user you did, and let them cut it back:
   the supply chain.
 - A technology scan limited to companies misses universities, national labs and standards
   bodies, which are where the early signal usually is.
-- A customer-voice analysis of reviews misses support tickets and churn interviews, where
-  the actionable complaints are.
+- A customer-voice analysis built on public reviews misses the internal channels - support
+  tickets, churn interviews - where the actionable complaints are. These tools cannot load
+  them, so say that plainly rather than presenting the public corpus as the whole picture.
 
 ## Source adequacy
 
@@ -116,7 +117,7 @@ structured tender feeds. Research agents reach a useful subset of these through 
 routes, but the coverage is partial. Say so before building, not after - "indicative, not
 comprehensive" is a different deliverable from what the user probably imagines.
 
-**Personal data in uploaded files.** When a customer uploads support tickets, survey
-responses or transcripts, those may carry names, contact details and account identifiers.
-Analyse at the theme level and quote anonymously. Do not reproduce identifying details in
-a report, and say so if the corpus is full of them.
+**Personal data in source text.** Public reviews, forum posts and social comments carry
+usernames and often real names, and complaints sometimes include pasted contact details or
+account identifiers. Analyse at the theme level and quote anonymously. Do not reproduce
+identifying details in a report, and say so if the corpus is full of them.
