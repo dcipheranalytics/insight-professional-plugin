@@ -55,15 +55,40 @@ a second variable. Then either:
 
 - **Matrix** - jurisdictions as rows, dimensions as columns. The comparison view, and the
   right default for a footprint review.
-- **Radar** - for prioritisation: angular axis "impact on our operations", radial axis
-  "time until this affects us", sized by momentum. Turns a register into a decision aid,
-  and is the better output when the user must choose where to act. See
-  `../dcipher-mechanics/references/workbenches.md`.
+- **Radar** - for prioritisation, and the better output when the user must choose where to
+  act. A radar sorts *risk developments* into sectors; it does not score jurisdictions. Each
+  bubble is a theme the model found in the documents, with a document count, placed on a 1-5
+  scale against your two axis definitions.
 
-Add a scheduled news KB per jurisdiction, in local languages, for the monitoring case.
+```
+mode: "newsAnalysis",             // recent developments; "trendDetection" for shifts in direction
+approach: "top-down",             // sectors you choose
+predefinedSegments: one per risk dimension, enableAdditionalTrends: true
+angularScaleParam: { openEndedDefinition: "Severity for our operations there (1 = negligible, 5 = threatens the operation)" }
+radialScaleParam:  { openEndedDefinition: "Time until it bites (1 = already happening, 5 = more than two years away)" }
+sizeScaleParam:    { predefinedMetric: "volume" }       // "momentum" once there is history
+```
+
+Sectors by risk dimension is the pattern the tool itself illustrates (its example sector is
+"Climate Risk"), and it gives a cross-country view of each type of risk. Sectors by
+jurisdiction is the natural alternative for a per-country picture, but it is untested: check
+that bubbles land under the right country before relying on it. Use the matrix when the
+question is jurisdiction against dimension.
+
+The radar reads every knowledge base in the project, so the news KB below feeds it and any
+profile KB will as well; expect some profile text to surface as themes. Set the radar
+`period` in the UI config to weekly or monthly for a news watch. Anchor both ends of each
+axis as above and check two bubbles you know before reading the chart. See
+`../dcipher-mechanics/references/workbenches.md`.
+
+Add a scheduled news KB per jurisdiction, in local languages. It is the monitoring feed, and
+it is what the radar reads.
 
 ## Reading it like an analyst
 
+- **A radar is a sort, not a score.** Placement is the model's judgement on a 1-5 scale, so
+  it supports "look at this first" and never "this country is a 4.2". That is what keeps it
+  consistent with the rule against numeric risk scores below.
 - **Rank against exposure, not against each other.** A high-risk country where the
   organisation has one salesperson matters less than a moderate-risk one holding a factory.
   This is what makes it a brief rather than an index.

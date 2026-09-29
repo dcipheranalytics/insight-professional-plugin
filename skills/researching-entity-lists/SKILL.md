@@ -69,7 +69,7 @@ hardest cases - the smallest, the least-documented, the non-English one. Read th
 with `sample_kb`. Fix the task. Then run the full list. A bad task discovered at entity 5
 costs minutes; discovered at entity 200 it costs the whole run.
 
-**4. Poll and verify.** `get_last_flow_run_status(flowId)` to completion, then `sample_kb`
+**4. Wait and verify.** `wait_for_flow(flowId)` until done, then `sample_kb`
 across several entities, not one. Check specifically that entities differ from each other -
 near-identical rows mean the agent is reasoning from general knowledge rather than
 researching, and the task needs sharper source constraints.

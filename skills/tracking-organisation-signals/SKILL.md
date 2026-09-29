@@ -55,7 +55,7 @@ signals beats a broad read on irrelevant ones.
 Add a scheduled news KB over the organisation names for continuous coverage between
 research runs.
 
-**2. Poll, then sample.** `get_last_flow_run_status` to completion, then `sample_kb` across
+**2. Wait, then sample.** `wait_for_flow` until done, then `sample_kb` across
 several entities. Check that cells carry dated events with URLs rather than summaries of
 the organisation's about page, and that entities differ from one another. Near-identical
 rows mean the agent is reasoning from general knowledge, not researching - tighten the

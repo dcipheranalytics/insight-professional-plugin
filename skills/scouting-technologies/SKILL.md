@@ -57,7 +57,7 @@ no commercial counterpart, which is either an opportunity or a signal that it do
 work at scale.
 
 **3. Radar when the question is timing.** If the user needs to know *when*, build a radar
-with the radial axis as "time to production readiness for <the client's application>" and
+with the radial axis as "time to production readiness for <the client's application> (1 = already in production, 5 = still a laboratory result)" and
 the angular axis as "fit to our capability need". Momentum needs history - if the corpus
 is thin, size by `volume` and say so. See `../dcipher-mechanics/references/workbenches.md`.
 

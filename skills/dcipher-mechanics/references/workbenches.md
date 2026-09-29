@@ -19,10 +19,13 @@ Notes that save round trips:
 - If you did not create the workbench in this session, call
   `get_insight_booster_workbench({ id, workbenchId })` to confirm its type. The config
   tools reject a type mismatch.
-- `growth` has no config tool - it reads the landscape and takes `broadness_level` at
-  result time.
-- `update_insight_booster_workbench_ui_config` handles display-only settings; it never
-  changes the analysis.
+- `growth` has no data-config tool, but its `period` and `broadnessLevel` live in the
+  workbench's UI config, and `get_growth_result` also takes a `broadness_level`.
+- `update_insight_booster_workbench_ui_config` takes one of three shapes, matched to the
+  workbench type: radar `{ period, showHiddenBubbles }`, bump `{ period, normalize }`, growth
+  `{ period, broadnessLevel }`. **Some of these change the numbers, not only the display** -
+  the radar `period` sets the time bucket behind momentum and size. Landscape, matrix and
+  report workbenches accept no UI config.
 
 ## Choosing the workbench
 
@@ -94,8 +97,8 @@ the user's taxonomy missed - usually worth it, and the additions are themselves 
 The two axes take either an AI-derived definition or a metadata aggregation:
 
 ```
-angularScaleParam: { openEndedDefinition: "Impact on the client's core business" }
-radialScaleParam:  { openEndedDefinition: "Time until widespread commercial impact" }
+angularScaleParam: { openEndedDefinition: "Impact on the client's core business (1 = negligible, 5 = threatens it)" }
+radialScaleParam:  { openEndedDefinition: "Time until widespread commercial impact (1 = already happening, 5 = more than five years away)" }
 sizeScaleParam:    { predefinedMetric: "momentum" }   # or "volume"
 ```
 
@@ -106,6 +109,26 @@ three-week corpus it is noise. Use `volume` or fix the corpus.
 
 Alternatively `aggregateMetadataDefinition: { field, aggregateFunction }` (`sum`, `mean`,
 `max`) to drive an axis off a real numeric field such as funding amount.
+
+**What comes back.** A list of sectors, each holding bubbles. A risk-themed project on the
+platform returned 7 sectors and 27 bubbles. Sector titles are generated sentences ("Agentic AI
+Expands the Cybersecurity Attack Surface"). Each bubble has a title, a `summary`, a document
+`count`, an `angularScale` and `radialScale` on a **1-5 scale**, a `sizeScale` holding the
+volume for each period bucket (`daily`, `weekly`, `monthly`, and so on) and around ten source
+references. Positions are the model's qualitative judgement against your two definitions, not
+measurements, so report them as placement and never as scores.
+
+**Anchor both ends of every axis.** Naming the quantity is not enough. In that project the
+radial axis was defined as "Time until this risk or trend materially affects mainstream
+organizations and society". The model gave 5.0 to shadow AI and 4.9 to prompt injection, both
+already widespread, and 1.4 to kill-switch proposals, which are speculative future policy. It
+had read the axis as imminence, the reverse of what the wording says. Write the scale into the
+definition, as in the example above, then check two bubbles whose timing you know before
+reading the chart.
+
+**Set the bucket.** The radar `period` in the UI config (`daily` to `biennial`) decides the
+time bucket behind `momentum` and `volume`. Weekly suits a news corpus watched over months;
+quarterly suits a slower research corpus.
 
 Phrase axis definitions as the client's decision criterion, not as a generic metric.
 "Impact on society" is a template; "Threat to our aftermarket service revenue" is an
@@ -131,8 +154,10 @@ need.
 
 ## Growth
 
-No config tool. `get_growth_result({ project_id, workbench_id, broadness_level })` returns
-topics with `growths` and `volumes` keyed by time bucket.
+Configured through the UI config: `period` (`daily` up to `biennial`) and `broadnessLevel`.
+`get_growth_result({ project_id, workbench_id, broadness_level })` returns topics with
+`growths` and `volumes` keyed by time bucket; pass `broadness_level` explicitly rather than
+relying on the default of 1.
 
 Read growth and volume together. A topic can double from two documents to four; that is
 not a trend. Filter on `size` or `volumes` before reporting a growth rate.
@@ -206,11 +231,21 @@ combination, each with `likelihood_score` and `impact_score` (0-1) plus rational
 **`title` and `description` are only generated for `highlighted: true` scenarios** - the
 rest are scored combinations with null titles. Project accordingly.
 
-## Reading results: always project
+## Reading results: ask for a projection, then check it
 
 Every result tool accepts `projection: { pipeline: [...] }` in MongoDB aggregation syntax,
 applied to the value inside `result` - do not project `result.*` paths. Without a
-projection these payloads are large enough to crowd out the analysis.
+projection these payloads are large enough to crowd out the analysis: a radar of 27 bubbles
+came to 339,571 characters, mostly `references`, `examples` and the per-period `sizeScale`.
+
+**Projection did not take effect when tested.** Three pipelines against that radar - a
+`$limit` plus `$map`, a `$slice` inside `$map`, and the bare `[{ $project: { title: 1 } }]` -
+each returned the identical full payload. Whether that is the server or the connector is not
+established. So the pipelines below are the documented shape and are worth sending, but treat
+them as unverified: check the size and fields of what comes back, and if it is the full
+payload, work with it rather than resending variants. Where the client saves an oversized
+result to a file, read the file with a script (`jq` or Python) and pull out only the fields
+you need; never paste the whole result into the analysis.
 
 Radar, trimmed to what a briefing needs:
 

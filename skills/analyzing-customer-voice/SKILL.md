@@ -94,12 +94,34 @@ Read at two broadness levels: a high level for the executive summary ("five thin
 customers talk about"), level 1-2 for the actionable specifics ("the export button in the
 mobile app").
 
-**4. Trend, if timestamps exist.** Growth (`get_growth_result` with `broadness_level`)
+**4. Radar, to prioritise.** A landscape shows what customers talk about; a radar sorts it
+into what to act on first. Build a radar workbench in `contentAnalysis` mode, which surfaces
+key themes and sub-themes - the mode this material usually wants. Use `approach: "bottom-up"`
+unless the user has their own list of product areas, in which case use `top-down` with those
+areas as the sectors.
+
+```
+mode: "contentAnalysis",
+areaOfInterest: "<the product and who uses it, in one sentence>",
+angularScaleParam: { openEndedDefinition: "Severity for the customer (1 = minor annoyance, 5 = they stop using the product or escalate publicly)" },
+radialScaleParam:  { openEndedDefinition: "How established the problem is (1 = already widespread among customers, 5 = only early signs)" },
+sizeScaleParam:    { predefinedMetric: "volume" }
+```
+
+Two other modes fit specific questions. `trendDetection` suits "which issues are emerging",
+sized by `momentum` once the corpus has history. `narrativeAnalysis` suits "what story are
+customers telling about us", the reasons behind the complaints rather than the complaints.
+
+Placement is the model's judgement on a 1-5 scale, so report it as prioritisation and never
+as a severity score. Anchor both ends of each axis as above, and check two bubbles you know
+before reading the chart. See `../dcipher-mechanics/references/workbenches.md`.
+
+**5. Trend, if timestamps exist.** Growth (`get_growth_result` with `broadness_level`)
 answers "which complaints are accelerating" - the most useful single output for a
 prioritisation meeting. Bump answers "what displaced what". Both need timestamps; check
 first.
 
-**5. Question clusters.** Recurring customer *questions* are a distinct output from
+**6. Question clusters.** Recurring customer *questions* are a distinct output from
 complaints and usually map straight to documentation or onboarding gaps. Pull them with
 `ask_research_chatbot` against the project, or as a separate report section.
 

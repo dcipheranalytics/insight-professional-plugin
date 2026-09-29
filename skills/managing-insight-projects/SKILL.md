@@ -26,8 +26,9 @@ other. That reading is the actual deliverable.
 
 ## Reuse before creating
 
-Cloning a configured project is nearly always better than rebuilding one - filters,
-workbench configuration and report templates come with it.
+Cloning a configured project is nearly always better than rebuilding one - the clone keeps
+the configuration, workbenches and filters, but starts with no generated reports. Report
+templates belong to the organisation, so the clone can use them without copying them.
 
 ```
 clone_insight_booster        # new period, new segment, new client, same analysis
@@ -44,13 +45,14 @@ create_insight_booster_workbench / rename_insight_booster_workbench
 delete_insight_booster_workbench
 reorder_insight_booster_workbenches         # order = the reading order of the story
 get_insight_booster_workbench({ id, workbenchId })
-update_insight_booster_workbench_ui_config  # display only, never the analysis
+update_insight_booster_workbench_ui_config  # period / normalize / broadnessLevel - some change the numbers
 ```
 
 Workbench order is not cosmetic - it is the narrative sequence a colleague opening the
 project will read. Context, then finding, then implication.
 
-Views (saved filter states) let one project serve several audiences without cloning:
+Views (saved filters, each scoped to one knowledge base) let one project serve several
+audiences without cloning:
 
 ```
 validate_insight_booster_view_name -> create_insight_booster_view

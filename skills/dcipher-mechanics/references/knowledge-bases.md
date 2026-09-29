@@ -36,8 +36,13 @@ What can still be done when the material is the user's own:
   product directly even when these tools cannot create them - say so rather than
   pretending the capability does not exist anywhere.
 
-Report `sheets` and `sheetInputs` reference uploaded spreadsheet files, so they are
-unavailable for the same reason. Build report sections from knowledge-base `inputs`.
+`create_file_kb` and `get_file_upload_url` are not on the server. `list_files` and
+`get_file_by_name` still are, but nothing uploads a file or builds a KB from one, so they
+lead nowhere in these workflows.
+
+Report `sheets` and `sheetInputs` reference spreadsheet files by id, and there is no way to
+upload one here, so treat them as unavailable. Whether a file already in the organisation
+could be attached is untested. Build report sections from knowledge-base `inputs`.
 
 ## Getting the search terms right
 
@@ -102,10 +107,20 @@ schedule / insightBoosterId / summarization as above
 ```
 
 - Placeholder `$company` in the task maps to `variables[].label = "company"`.
-- Each variable also becomes a KB column, so labels must not collide with the reserved
+- Each variable also becomes a **categorical metadata field** on the resulting documents.
+  This is verified on a live project: a task with `$risk_area` and `$provider` produced
+  fields `risk_area` and `provider`. It is what lets a landscape be coloured by, or a bump
+  chart ranked over, the entity you researched. Labels must not collide with the reserved
   output columns: `id`, `Text`, `Source`, `URL`, `Date`.
+- The schema lists these fields by their bare label, but `get_kb_field_statistics` wants
+  `metadata.<label>` and rejects the bare form (HTTP 400, "Unexpected field name"). Use
+  `metadata.<label>` when a tool asks for a field name, and confirm the form that
+  `colorField`, `sizeField` and `metadataField` want with a first call before relying on it.
 - `combinations` runs the cross-product (10 companies x 5 triggers = 50 runs). `aligned`
-  pairs values position-by-position and requires equal-length lists.
+  pairs values position-by-position and requires equal-length lists. It is also the way to
+  attach an attribute to each entity: two aligned variables, such as `actor` and
+  `actor_type`, give every document both fields, so a landscape can be coloured by type.
+  Reference both placeholders in the task.
 - **Watch the run count.** The cross-product grows fast. Before firing 200 runs, tell the
   user the size and confirm.
 
@@ -154,15 +169,27 @@ recall, but tell the user their document counts will overlap between runs.
 Scheduling is the right default for monitoring deliverables (competitor tracking,
 narrative monitoring, regulatory watch) and wrong for one-off questions.
 
-## Polling
+## Waiting for a build
 
 ```
-get_last_flow_run_status(flowId)  ->  { status, knowledgeBaseId?, message? }
+wait_for_flow(flowId)  ->  { done, knowledgeBaseId?, message? }
 ```
 
-`message` carries the failure reason when a run failed, and is absent otherwise. For a
-scheduled flow this reports the most recent run, and the `knowledgeBaseId` returned is the
-first run's KB.
+Prefer this to `get_last_flow_run_status` after any `create_*_kb` call. Each call blocks for
+up to 25 seconds and returns as soon as the run reaches a terminal status. While `done` is
+false, call it again with the same `flowId`. A news or social KB typically takes about ten
+minutes, which is roughly two dozen consecutive calls, so do not stop after two.
+Research-agent builds scale with the number of runs.
+
+- State the `flowId` once when the build starts and report again when `done` is true. Do not
+  narrate each call, and do not hand back to the user between calls.
+- On `done`, the response carries `knowledgeBaseId`, or the failure reason in `message`.
+- A dropped wait is safe to resume from the `flowId`: a run that finished in the meantime
+  returns immediately.
+
+`get_last_flow_run_status(flowId)` is the non-blocking check. Use it to look at a scheduled
+flow: it reports the most recent run on the schedule, and the `knowledgeBaseId` it returns is
+the first run's KB, because every run materialises a new timestamp-suffixed KB.
 
 Once complete, `sample_kb(kb_id)` before doing anything else. A KB full of boilerplate,
 paywall stubs or off-topic documents will produce a confident and wrong analysis

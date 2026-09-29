@@ -33,11 +33,12 @@ check whether an existing one already covers the topic. Confirm with the user be
 creating a new project unless they explicitly asked for one. The same goes for KBs -
 `list_knowledge_bases` with `nameContains` first.
 
-**Everything that fetches data is asynchronous.** All four `create_*_kb` tools return a
-`flowId` immediately, not a knowledge base. Poll `get_last_flow_run_status(flowId)` until
-it completes; only then do you have a `knowledgeBaseId`. Never assume a KB is ready.
-Research-agent runs over a long entity list can take a while - tell the user what you are
-waiting on rather than polling silently.
+**Everything that fetches data is asynchronous.** All three `create_*_kb` tools return a
+`flowId` immediately, not a knowledge base. Wait with `wait_for_flow(flowId)`, which blocks
+for up to 25 seconds per call, and call it again until `done` is true - a news or social
+build takes around ten minutes, so expect about two dozen calls. State the `flowId` once when
+the build starts and report when it finishes; do not narrate each call or hand back to the
+user in between. Only then do you have a `knowledgeBaseId`. Never assume a KB is ready.
 
 **Timestamps gate half the analyses.** Bump charts, growth analysis, radar momentum and
 any "how has this changed" question need timestamped documents. Call
@@ -49,16 +50,19 @@ any "how has this changed" question need timestamped documents. Call
 filter, a landscape `colorField`/`sizeField`, or a bump `metadataField`. Custom fields are
 addressed as `metadata.<label>`.
 
-**Always project results.** `get_radar_result`, `get_landscape_result`,
-`get_matrix_result`, `get_bump_result`, `get_growth_result`, `get_report_result` and
-`run_scenario_analysis` all accept a MongoDB aggregation `projection` and all return large
-payloads without one. Ask for the smallest set of fields that answers the question. See
-`references/workbenches.md` for worked pipelines.
+**Ask for a projection, and check that it took effect.** `get_radar_result`,
+`get_landscape_result`, `get_matrix_result`, `get_bump_result`, `get_growth_result`,
+`get_report_result` and `run_scenario_analysis` all accept a MongoDB aggregation `projection`
+and all return large payloads without one, so ask for the smallest set of fields that answers
+the question. But do not assume it worked: on a live project three different pipelines, down
+to `[{ $project: { title: 1 } }]`, all returned the identical full radar of 339,571
+characters. Look at what came back, and plan for a large payload. See
+`references/workbenches.md`.
 
 ## References
 
-- `references/knowledge-bases.md` - the four KB constructors, their parameter shapes, query
-  building, and the polling loop.
+- `references/knowledge-bases.md` - the three KB constructors, their parameter shapes, query
+  building, and waiting for a build.
 - `references/projects-and-filters.md` - project creation, KB attachment, the three filter
   buckets, metadata schema.
 - `references/workbenches.md` - landscape, radar, bump, matrix, growth and scenario configs,

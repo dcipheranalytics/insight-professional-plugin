@@ -68,7 +68,7 @@ update_insight_booster_radar_workbench_config({
   predefinedSegments: [],                 // populate for top-down
   enableAdditionalSegments: true,
   angularScaleParam: { openEndedDefinition: "<impact on what, in the client's terms>" },
-  radialScaleParam:  { openEndedDefinition: "Time until this materially affects <client>" },
+  radialScaleParam:  { openEndedDefinition: "Time until this materially affects <client> (1 = already happening, 5 = more than five years away)" },
   sizeScaleParam:    { predefinedMetric: "momentum" }
 })
 get_radar_result({ project_id, workbench_id, projection })

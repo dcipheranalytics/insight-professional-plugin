@@ -67,7 +67,7 @@ the user or trim the trigger set.
 Add a news KB alongside only when the user also cares about visibility and framing - and
 if that is the main interest, this is the wrong skill.
 
-**2. Poll and sample.** `get_last_flow_run_status` to completion, then `sample_kb`. Check
+**2. Wait and sample.** `wait_for_flow` until it reports done, then `sample_kb`. Check
 that cells are returning real events with dates and URLs, not summaries of the company's
 about page. If they are, the task instruction needs tightening before you build the
 matrix.

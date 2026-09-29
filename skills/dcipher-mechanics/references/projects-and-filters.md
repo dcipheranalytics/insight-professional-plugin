@@ -45,6 +45,11 @@ Also available: `set_insight_booster_knowledge_base_filters`,
 `detach_knowledge_base_from_insight_booster`,
 `detach_all_knowledge_bases_from_insight_booster`.
 
+`set_insight_booster_knowledge_base_filters` **replaces all of that KB's pre-filters** with the
+ones you send: an omitted kind (`metadataFilters`, `semanticFilter`, `timestampFilter`) is
+removed, and an empty call clears them all. Send every filter you want to keep. Other
+knowledge bases are unaffected.
+
 ## Understanding the data before filtering
 
 Run these three, in this order, before any filter or workbench config:
@@ -104,8 +109,11 @@ stays reusable for the next question.
 
 ## Views
 
-Views are saved filter states, useful when one project serves several audiences or
-segments (per region, per business unit).
+Views are saved filters, useful when one project serves several audiences or segments (per
+region, per business unit). Each view is scoped to **one knowledge base**:
+`create_insight_booster_view` requires a `knowledgeBaseId`, and the view's filters only
+constrain that KB. Its `id` must be a fresh 24-character lowercase hex string, not the view's
+name, because the UI addresses views by it.
 
 ```
 validate_insight_booster_view_name -> create_insight_booster_view
@@ -113,7 +121,8 @@ update_insight_booster_view / delete_insight_booster_view
 ```
 
 Matrix rows/columns and report sections can be scoped to a view via `viewInputs`, which is
-how you get "the same analysis, per region" without cloning the project.
+how you get "the same analysis, per region" without cloning the project, provided the region
+is a metadata field in that KB.
 
 ## Housekeeping
 
@@ -125,5 +134,7 @@ reorder_insight_booster_workbenches / rename_insight_booster_workbench
 delete_insight_booster_workbench
 ```
 
-Cloning a configured project is almost always better than rebuilding one: the filters,
-workbench configs and report templates come with it.
+Cloning a configured project is almost always better than rebuilding one: the new project
+inherits the configuration, workbenches and filters, but starts with **no generated
+reports**. Report templates belong to the organisation rather than the project, so they are
+available to the clone without being copied.

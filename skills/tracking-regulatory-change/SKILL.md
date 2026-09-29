@@ -1,6 +1,6 @@
 ---
 name: tracking-regulatory-change
-description: Tracks regulation, legislation, policy and technical standards across named jurisdictions using Dcipher research agents, and produces a regulatory horizon brief or jurisdiction-by-topic matrix with status, legislative stage, timeline and business implications. Use for regulatory affairs, legislation tracking, policy monitoring, standards and consortium tracking, compliance-horizon work and "what is changing in <regulation> across <markets>" questions. Use assessing-country-risk instead when the question is broad operating risk in a jurisdiction rather than specific instruments, monitoring-narratives when the interest is the public debate around a policy rather than the instruments themselves, mapping-stakeholder-ecosystems when the user wants the actors and their positions rather than the rules, and scanning-emerging-trends for technology or market trends.
+description: Tracks regulation, legislation, policy and technical standards across named jurisdictions using Dcipher research agents for the official record and news for early signals, and produces a regulatory horizon brief or jurisdiction-by-topic matrix with status, legislative stage, timeline and business implications. Use for regulatory affairs, legislation tracking, policy monitoring, standards and consortium tracking, compliance-horizon work and "what is changing in <regulation> across <markets>" questions. Use assessing-country-risk instead when the question is broad operating risk in a jurisdiction rather than specific instruments, monitoring-narratives when the interest is the public debate around a policy rather than the instruments themselves, mapping-stakeholder-ecosystems when the user wants the actors and their positions rather than the rules, and scanning-emerging-trends for technology or market trends.
 ---
 
 # Tracking regulatory change
@@ -30,9 +30,10 @@ Always report the stage.
 
 ## Build
 
-**1. Research agents, not news.** Regulatory primary sources are official gazettes,
-regulator publications and legislative trackers. News reports on regulation with a lag and
-a slant. This is a research-agent use case.
+**1. Research agents for the instruments.** Regulatory primary sources are official gazettes,
+regulator publications and legislative trackers, and that is what the research-agent task
+targets. News reports on regulation with a lag and a slant, so it is never the source for
+stage, dates or obligations - but it has a different use, in step 2.
 
 ```json
 {
@@ -54,7 +55,23 @@ as a compliance view.
 
 Watch the run count: topics x jurisdictions grows fast.
 
-**2. Jurisdiction matrix.** Jurisdictions as rows, topics as columns.
+**2. News, for what the register does not show yet.** Add a news KB (`create_news_kb`) over
+the topics and jurisdictions, scheduled to the brief's cadence, with `params.language` set to
+the languages of the jurisdictions. Call `get_search_queries_from_agent` first rather than
+inventing keywords. News does three things the official sources cannot:
+
+- **Early signal.** Consultations, draft texts, ministerial statements and enforcement
+  priorities are reported before they reach a register.
+- **Contested points.** Industry pushback and political disagreement predict amendment,
+  delay and carve-outs.
+- **Dating the movement.** News carries timestamps, so it shows when attention on an
+  instrument rose.
+
+Take stage, dates, scope and obligations only from the official source, and use news to decide
+what to check. A news item about an instrument the register does not list yet is a lead to
+verify, not a finding.
+
+**3. Jurisdiction matrix.** Jurisdictions as rows, topics as columns.
 
 ```
 instruction: "For $row, summarise the current state of $column regulation using only the
@@ -68,10 +85,12 @@ summarizeColumns: true
 `summarizeColumns` gives the cross-jurisdictional read - "how divergent is this rule across
 our markets" - which is usually the strategic question underneath the compliance question.
 
-**3. Radar for the horizon view.** Where the user wants prioritisation rather than a
-register, a radar with the radial axis as "time until this applies to us" and the angular
-axis as "operational impact on our business" turns a compliance list into a planning
-instrument. Use `approach: "top-down"` with the regulatory topics as `predefinedSegments`,
+**4. Radar for the horizon view.** Where the user wants prioritisation rather than a
+register, a radar with the radial axis as "time until this applies to us (1 = already in
+force, 5 = not before five years)" and the angular axis as "operational impact on our
+business (1 = negligible, 5 = forces a change to how we operate)" turns a compliance list
+into a planning instrument. Built on the news KB, `newsAnalysis` mode suits a watch on
+developments; on the research-agent KB, `contentAnalysis` does. Use `approach: "top-down"` with the regulatory topics as `predefinedSegments`,
 and keep `enableAdditionalSegments: true` to catch instruments the client's framework
 missed.
 
@@ -124,4 +143,4 @@ client needs to decide. Then the divergence summary. Then explicitly: this is a 
 brief, not a compliance opinion, and it reflects the state on the date it was run.
 
 Regulatory tracking is a standing need - schedule the research-agent KB monthly or
-quarterly, template the brief, and say so.
+quarterly and the news KB weekly or monthly, template the brief, and say so.
