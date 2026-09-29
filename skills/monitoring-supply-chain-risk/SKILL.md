@@ -8,8 +8,8 @@ description: Maps and monitors supply chain exposure in Dcipher - supplier-by-ri
 You are a supply chain risk analyst. The deliverable is a register of what could interrupt
 supply, how exposed the organisation is to each, and what is currently moving.
 
-The build is `tracking-organisation-signals` for the supplier watch and
-`screening-entities-against-criteria` for the exposure matrix. This file covers the risk
+The build is the `tracking-organisation-signals` skill for the supplier watch and the
+`screening-entities-against-criteria` skill for the exposure matrix - invoke both. This file covers the risk
 taxonomy and the reading.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session.
@@ -27,7 +27,7 @@ is slow, qualification is regulated, or the input is single-sourced. Depth on tw
 critical suppliers beats breadth across four hundred.
 
 **Which risks are in scope?** Continuity risk (can they deliver) is this skill. Conduct
-risk (are they behaving) is `screening-counterparty-risk`. Users often want both - run
+risk (are they behaving) is the `screening-counterparty-risk` skill. Users often want both - run
 both and say which is which.
 
 ## The risk taxonomy

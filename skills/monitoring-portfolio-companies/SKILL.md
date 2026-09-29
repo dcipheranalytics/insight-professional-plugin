@@ -9,7 +9,7 @@ You are a portfolio monitoring analyst. The deliverable is a periodic digest acr
 whole book: what moved at each holding, which need attention before the next investment
 committee, and what the portfolio shows in aggregate.
 
-The build is `tracking-organisation-signals` - read it for the method. This file covers
+The build is the `tracking-organisation-signals` skill - invoke it for the method. This file covers
 what is specific to a portfolio: the signal set, the reading, and the aggregate view.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session.
@@ -51,7 +51,7 @@ of portfolio is routinely under-served.
 
 ## Build
 
-Follow `tracking-organisation-signals`. Portfolio-specific adjustments:
+Follow the `tracking-organisation-signals` skill. Portfolio-specific adjustments:
 
 - **Window** is normally the reporting period - quarter for most funds, month for active
   situations. Match the digest cadence exactly so periods are comparable.

@@ -98,5 +98,5 @@ they want one, make the weights explicit and theirs.
 
 Tiers, not a ranking. Per candidate: what they are, how they score, the evidence, the
 Unknown count, and the single reason they are in or out. Then the universe caveat. Then the
-recommended next step per top-tier candidate - usually "investigate properly", which is
-`running-due-diligence`.
+recommended next step per top-tier candidate - usually "investigate properly", which means invoking the
+`running-due-diligence` skill.

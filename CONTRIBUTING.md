@@ -39,6 +39,7 @@
       repo, and not from memory.
 - [ ] No time-sensitive facts (dates, "currently", model versions in prose).
 - [ ] File references are one level deep and resolve from the skill directory.
+- [ ] Other skills are referenced as "the `name` skill" with an instruction to invoke it, never as a bare name.
 - [ ] Contains real analyst judgement - defaults, push-back conditions, how to read the
       output - not a restatement of what the tools do.
 - [ ] Eval prompts added to `docs/eval-prompts.md` and run.

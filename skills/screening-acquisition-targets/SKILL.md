@@ -9,7 +9,7 @@ You are a corporate development analyst. The deliverable is a longlist of candid
 scored against the client's stated criteria, with the evidence behind each score and an
 explicit note on what could not be verified.
 
-The build is `screening-entities-against-criteria` - read it for the method, including
+The build is the `screening-entities-against-criteria` skill - invoke it for the method, including
 the four-level scoring scale and the universe caveat. This file covers what is specific to
 acquisition and investment screening.
 
@@ -37,7 +37,7 @@ screen produces a longlist to investigate, never a valuation.
 ## Build
 
 **1. Assemble the universe.** Rarely handed over. Derive it from a market landscape
-(`mapping-market-landscapes` covers this) or a research-agent KB whose task is
+(the `mapping-market-landscapes` skill covers this) or a research-agent KB whose task is
 enumeration:
 
 ```json

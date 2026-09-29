@@ -22,7 +22,7 @@ live in `../dcipher-mechanics/references/`.
 
 ## What makes this different from a market map
 
-`mapping-market-landscapes` answers "how is this market structured". This skill answers
+The `mapping-market-landscapes` skill answers "how is this market structured". This skill answers
 "who are the actors and how do they relate". The unit is the **actor and the relationship**,
 not the segment. An ecosystem map that is just a categorised list of organisations has
 failed - the relationships are the product.
@@ -70,7 +70,7 @@ organisations out of the landscape's topic examples and by asking the research b
 mentioned most. State plainly that a derived list reflects who is *visible*, which over-represents the media-active and under-represents the
 quietly influential - often the actors that matter most.
 
-**2. Research each actor in parallel.** This is `researching-entity-lists` machinery
+**2. Research each actor in parallel.** This is the `researching-entity-lists` skill's machinery
 applied to actors:
 
 ```json

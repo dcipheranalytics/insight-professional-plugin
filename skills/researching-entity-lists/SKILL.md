@@ -109,7 +109,7 @@ researching, and the task needs sharper source constraints.
 
 The synthesis first - what the whole list shows - then the outliers, then the dataset
 itself, then coverage and its gaps. Hand back the KB and project so the user can query it
-directly, and point at `querying-knowledge-bases` for follow-up questions against it.
+directly, and point at the `querying-knowledge-bases` skill for follow-up questions against it.
 
 If the question recurs (annual supplier review, quarterly country scan), schedule the
 research-agent KB and template the report. Each run creates a new timestamp-suffixed KB,

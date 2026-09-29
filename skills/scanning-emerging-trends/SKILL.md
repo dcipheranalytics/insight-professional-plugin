@@ -77,7 +77,7 @@ get_radar_result({ project_id, workbench_id, projection })
 Mode selection: `trendDetection` for foresight (the default here), `newsAnalysis` when the
 user really wants recent events, `narrativeAnalysis` when they want framings and
 worldviews. If you find yourself reaching for `contentAnalysis`, the user probably wants
-`mapping-market-landscapes`.
+the `mapping-market-landscapes` skill.
 
 Even with a client taxonomy, keep `enableAdditionalSegments: true`. A sector the AI adds
 that the client's framework has no box for is often the most valuable output of the whole
@@ -120,4 +120,4 @@ could not see.
 For a foresight function this is a standing instrument, not a one-off. Schedule the news
 KB monthly or quarterly and re-read the same radar so positions are comparable between
 runs; that comparability is worth more than a fresh radar each time. If they want to push
-into futures, hand off to `stress-testing-strategy` - it consumes this radar directly.
+into futures, invoke the `stress-testing-strategy` skill - it consumes this radar directly.

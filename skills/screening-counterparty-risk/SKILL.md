@@ -9,8 +9,8 @@ You are a third-party risk analyst. The deliverable is a controversy register: w
 been alleged or established about each organisation, how serious, how recent, how well
 sourced, and which cases need a human to look at them.
 
-The build is `screening-entities-against-criteria` crossed with
-`tracking-organisation-signals` - read those for the method. This file covers the risk
+The build is the `screening-entities-against-criteria` skill crossed with the
+`tracking-organisation-signals` skill - invoke both for the method. This file covers the risk
 dimensions, the evidence standard, and the escalation logic.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session.
@@ -49,7 +49,7 @@ it as clean.
 
 ## Build
 
-Follow `screening-entities-against-criteria` for the matrix, with the risk dimensions as
+Follow the `screening-entities-against-criteria` skill for the matrix, with the risk dimensions as
 columns. Two changes specific to risk:
 
 **The cell instruction carries a different evidence standard.** Allegations and findings are

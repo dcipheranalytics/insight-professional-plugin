@@ -9,8 +9,8 @@ You are a communications and public affairs analyst. The deliverable is a narrat
 which stories are being told about the subject, who is telling them, how much reach each
 has, and which direction they are moving.
 
-The build is `analyzing-content-themes` applied to media and social corpora - read it for
-the landscape method. This file covers what is specific to coverage: source construction,
+The build is the `analyzing-content-themes` skill applied to media and social corpora -
+invoke it for the landscape method. This file covers what is specific to coverage: source construction,
 share of voice, and how to read a narrative.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session. Mechanics

@@ -9,8 +9,9 @@ You are a country risk analyst. The deliverable is a jurisdiction brief: what co
 wrong where this organisation operates or intends to, how likely it is to affect them
 specifically, and what to watch.
 
-The build is `researching-entity-lists` with jurisdictions as the entity list, plus
-`screening-entities-against-criteria` for the matrix. This file covers the dimensions and
+The build is the `researching-entity-lists` skill with jurisdictions as the entity list,
+plus the `screening-entities-against-criteria` skill for the matrix - invoke both. This
+file covers the dimensions and
 the reading.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session.
@@ -50,7 +51,7 @@ differentiator in this skill.
 
 ## Build
 
-Follow `researching-entity-lists`, with jurisdictions as the variable and the dimensions as
+Follow the `researching-entity-lists` skill, with jurisdictions as the variable and the dimensions as
 a second variable. Then either:
 
 - **Matrix** - jurisdictions as rows, dimensions as columns. The comparison view, and the
@@ -109,7 +110,7 @@ it is what the radar reads.
 - Assessment with no stated exposure - it produces a country profile nobody uses.
 - English-only sourcing on a non-English jurisdiction.
 - Predictions about specific political outcomes. Report drivers and indicators; if the
-  user wants futures, `stress-testing-strategy` is the right instrument.
+  user wants futures, invoke the `stress-testing-strategy` skill.
 
 ## Deliver
 

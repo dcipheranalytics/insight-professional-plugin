@@ -16,7 +16,7 @@ live in `../dcipher-mechanics/references/`.
 
 A scenario workbench requires `radarWorkbenchId` - it builds on the trends a radar found.
 Without a populated radar the scenarios are generic. If the project has no radar, build one
-first with `scanning-emerging-trends`, read it, and only then come back.
+first by invoking the `scanning-emerging-trends` skill, read it, and only then come back.
 
 ## Frame
 

@@ -107,5 +107,5 @@ whether each is opportunity or dead ground, then implications for the user's que
 Sources throughout. Close with the map's limits.
 
 If the user is entering the market, the natural next steps are
-`tracking-competitor-moves` for the incumbents they will face and
-`stress-testing-strategy` if the entry decision hinges on uncertain conditions.
+the `tracking-competitor-moves` skill for the incumbents they will face and
+the `stress-testing-strategy` skill if the entry decision hinges on uncertain conditions.

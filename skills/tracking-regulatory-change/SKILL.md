@@ -108,8 +108,8 @@ it is a compliance obligation or a market expectation.
 
 Two things this surfaces that a pure regulation scan misses: the lead time, since standards
 work is visible years before the rule that references it, and the participation question -
-who is in the room, which is `mapping-stakeholder-ecosystems` territory and worth handing
-off when the user wants to influence rather than comply.
+who is in the room, which is the `mapping-stakeholder-ecosystems` skill's territory and worth
+invoking when the user wants to influence rather than comply.
 
 ## Reading it like an analyst
 
