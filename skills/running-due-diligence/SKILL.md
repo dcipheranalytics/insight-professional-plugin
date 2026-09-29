@@ -1,6 +1,6 @@
 ---
 name: running-due-diligence
-description: Builds a cited evidence pack on a single company, asset, partner or vendor against specific diligence questions in Dcipher, with a red-flag register and an explicit account of what could not be verified. Use for commercial and pre-deal due diligence, vendor and partner vetting, counterparty checks, background research on a named organisation and investment-thesis validation. Use screening-acquisition-targets instead when the goal is to find and filter candidates rather than investigate one that is already chosen, tracking-competitor-moves when the user wants ongoing monitoring rather than a point-in-time investigation, and researching-entity-lists when the same questions must be answered across a long list rather than in depth on one target.
+description: Builds a cited evidence pack on a single organisation in Dcipher against specific diligence questions, with a red-flag register and an explicit account of what could not be verified. Works for any organisation type - company, supplier, partner, vendor, NGO, grantee, institution or public body - using news, social media and public web research. Use for commercial and pre-deal due diligence, vendor and partner vetting, grantee and counterparty checks, background research on a named organisation, and investment-thesis validation on a chosen target. Use screening-entities-against-criteria or screening-acquisition-targets instead when the goal is to find and filter many candidates rather than investigate one, screening-counterparty-risk when only negative signals are wanted across a set, tracking-organisation-signals when the user wants ongoing monitoring rather than a point-in-time investigation, and researching-entity-lists when the same questions must be answered across a long list.
 ---
 
 # Running due diligence
@@ -26,9 +26,15 @@ Say it once and then get on with the job. Do not repeat it in every section.
 ## Frame
 
 **The target, unambiguously.** Legal entity, not brand. Groups, subsidiaries and
-similarly-named companies get conflated constantly, and a diligence pack on the wrong
-entity is worse than none. Confirm the entity, its jurisdiction and its group structure
-before researching anything.
+similarly-named organisations get conflated constantly, and a diligence pack on the wrong
+entity is worse than none. Confirm the entity, its jurisdiction and its group or parent
+structure before researching anything.
+
+**The organisation type**, because it changes the question set. A supplier is assessed on
+capability, continuity and conduct; an NGO or grantee on governance, delivery track record
+and use of funds; a public body on mandate, budget and accountability; a company on the
+commercial set below. Take the relevant rows and drop the rest rather than running all ten
+against a charity.
 
 **The questions.** Diligence without a question list is a profile. Get the actual
 questions - or propose them from the thesis and have the user cut them. The standard
@@ -66,10 +72,15 @@ each area gets its own focused run, rather than one task trying to do everything
 }
 ```
 
-Add a news KB for reputation and adverse-media coverage, with the target's languages set.
-Add a file KB if the user has a data room extract, pitch deck or management presentation -
-then the analysis becomes "what management says versus what independent sources show",
-which is the most valuable read in the whole pack.
+Add a news KB for reputation and adverse-media coverage, with the target's languages set,
+and a social KB where public conversation about the organisation is material - for NGOs,
+grantees, consumer-facing businesses and anything with a community or beneficiary base,
+social sources often carry complaints and disputes that never reach the press.
+If the user has a data room extract, pitch deck or management presentation, it cannot be
+ingested here. That matters, and it is worth saying: the strongest read in diligence is
+management's own account set against independent evidence, and without the documents you
+have only the second half. Ask instead for the specific claims they want tested - those
+become the diligence questions, which recovers most of the value.
 
 **2. Verify the entity.** Before analysing, `sample_kb` and confirm the documents are about
 the right company. Name collisions are common and corrupt everything downstream.

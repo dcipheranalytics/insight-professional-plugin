@@ -1,6 +1,6 @@
 ---
 name: tracking-regulatory-change
-description: Tracks regulation, legislation and policy change across named jurisdictions using Dcipher research agents, and produces a regulatory horizon brief or jurisdiction-by-topic matrix with status, legislative stage, timeline and business implications. Use for regulatory affairs, legislation tracking, policy monitoring, compliance-horizon and "what is changing in <regulation> across <markets>" questions. Use monitoring-narratives instead when the interest is the public debate and framing around a policy rather than the instruments themselves, mapping-stakeholder-ecosystems when the user wants the actors and their positions rather than the rules, and scanning-emerging-trends for technology or market trends rather than regulatory instruments.
+description: Tracks regulation, legislation, policy and technical standards across named jurisdictions using Dcipher research agents, and produces a regulatory horizon brief or jurisdiction-by-topic matrix with status, legislative stage, timeline and business implications. Use for regulatory affairs, legislation tracking, policy monitoring, standards and consortium tracking, compliance-horizon work and "what is changing in <regulation> across <markets>" questions. Use assessing-country-risk instead when the question is broad operating risk in a jurisdiction rather than specific instruments, monitoring-narratives when the interest is the public debate around a policy rather than the instruments themselves, mapping-stakeholder-ecosystems when the user wants the actors and their positions rather than the rules, and scanning-emerging-trends for technology or market trends.
 ---
 
 # Tracking regulatory change
@@ -74,6 +74,23 @@ axis as "operational impact on our business" turns a compliance list into a plan
 instrument. Use `approach: "top-down"` with the regulatory topics as `predefinedSegments`,
 and keep `enableAdditionalSegments: true` to catch instruments the client's framework
 missed.
+
+## Technical standards
+
+Standards are soft regulation and belong in the same brief. A standard from ISO, IEC, CEN,
+ETSI or an industry consortium can constrain a product as hard as a statute, usually
+earlier, and it is frequently the instrument that a later regulation then references.
+
+Treat standards bodies as additional jurisdictions in the matrix, with their own stages:
+work item, draft, public enquiry, published, referenced in law. The research task is the
+same shape - add the responsible committee, the participating organisations, and whether
+the standard is voluntary or cited by regulation, because that last point decides whether
+it is a compliance obligation or a market expectation.
+
+Two things this surfaces that a pure regulation scan misses: the lead time, since standards
+work is visible years before the rule that references it, and the participation question -
+who is in the room, which is `mapping-stakeholder-ecosystems` territory and worth handing
+off when the user wants to influence rather than comply.
 
 ## Reading it like an analyst
 

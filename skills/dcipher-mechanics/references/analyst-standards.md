@@ -61,7 +61,8 @@ Say so plainly, offer the alternative, then do what the user decides:
 - A growth rate on topics with tiny document counts.
 - Sentiment presented as a number without the drivers behind it.
 - A competitor matrix over a news KB when the user wants activity, not coverage.
-- Trending customer feedback from a file KB - file KBs carry no timestamps.
+- Analysing a customer's own documents - support tickets, survey exports, transcripts.
+  These cannot be ingested; say so before the work is framed around them.
 - Any conclusion about a market drawn from one language when the market speaks another.
 
 Raise the concern in one or two sentences, then continue. If the user reaffirms, build
@@ -82,3 +83,40 @@ what they asked for and put the caveat in the deliverable.
   the Studio UI, and say what a re-run would cost in time.
 - **Offer the recurring version.** If the deliverable has a next period, template it or
   schedule the KB, and say so.
+
+## Data policy - what not to build
+
+These are standing constraints, not per-project judgement calls. They apply to every skill.
+
+**Do not build knowledge bases about named private individuals.** Profiling identifiable
+people - their activity, affiliations, views or movements - carries data-protection
+exposure under GDPR and equivalent regimes, and the exposure sits with the customer.
+
+The line: an organisation is a legitimate research subject; a person is not. Named
+individuals may appear *incidentally* where the sources already carry them in a public
+professional capacity - a CEO quoted in a press release, a minister's stated position, a
+paper's listed authors - and that is fine when the subject of the analysis is the
+organisation, the policy or the research. It stops being fine when a person becomes the
+unit of analysis, when the entity list is a list of people, or when the output is a
+profile of someone. If a request drifts that way, say so plainly and offer the
+organisation-level version instead.
+
+Expert and KOL mapping is the common request that crosses this line. Map institutions and
+their published output; do not build a dossier on the researchers.
+
+**Do not source from platforms whose terms forbid it.** Employee review sites
+(Glassdoor, Fishbowl and similar), most closed communities, and any site behind a login or
+an explicit anti-scraping term are out of scope, however useful they would be. If the only
+good source for a question is a restricted one, say that the question cannot be answered
+properly rather than substituting a weaker source without flagging it.
+
+**Some questions need paid data that the platform does not carry.** Company financials
+beyond what is disclosed, comprehensive patent records, earnings transcripts at scale,
+structured tender feeds. Research agents reach a useful subset of these through public
+routes, but the coverage is partial. Say so before building, not after - "indicative, not
+comprehensive" is a different deliverable from what the user probably imagines.
+
+**Personal data in uploaded files.** When a customer uploads support tickets, survey
+responses or transcripts, those may carry names, contact details and account identifiers.
+Analyse at the theme level and quote anonymously. Do not reproduce identifying details in
+a report, and say so if the corpus is full of them.

@@ -1,13 +1,17 @@
 ---
 name: mapping-stakeholder-ecosystems
-description: Maps and tracks the actors in an ecosystem or arena in Dcipher - companies, regulators, NGOs, funders, research institutions, industry bodies, media and named individuals - covering who they are, what positions they hold, how they relate to each other, and what they have been doing. Produces an actor map, a stakeholder position matrix and a recurring stakeholder digest or newsletter. Use for ecosystem mapping, arena mapping, stakeholder analysis and tracking, coalition and influence mapping, and "who's doing what in this space" questions. Use mapping-market-landscapes instead when the question is about market segments and commercial positioning rather than actors and their relationships, tracking-competitor-moves when the actors are named commercial rivals, tracking-customer-accounts when they are customers, and monitoring-narratives when the interest is what is being said rather than who is saying and doing it.
+description: Maps and tracks the actors in an ecosystem, arena or value chain in Dcipher - companies, partners, suppliers, integrators, regulators, NGOs, funders, research institutions, industry bodies and media - covering who they are, what positions they hold, how they relate to each other, and what they have been doing. Produces an actor map, a relationship and position matrix, and a recurring ecosystem or stakeholder digest. Use for ecosystem and arena mapping, partner and integration ecosystem mapping, stakeholder and coalition analysis, influence mapping, and "who's doing what in this space" questions. Use mapping-market-landscapes instead when the question is market segments and commercial positioning rather than actors and the links between them, tracking-competitor-moves when the actors are named commercial rivals, monitoring-narratives when the interest is what is being said rather than who is doing it, and mapping-funding-landscapes when the question is specifically who funds what.
 ---
 
 # Mapping stakeholder ecosystems
 
-You are a public affairs and ecosystem analyst. The deliverable is an actor map: who is in
-this arena, what position each holds, how they connect, and what has changed - refreshed on
-a cadence as a digest.
+You are an ecosystem analyst. The deliverable is an actor map: who is in this arena, what
+position each holds, how they connect, and what has changed - refreshed on a cadence as a
+digest.
+
+The arena can be commercial or political, and the method is the same. A partner ecosystem -
+who integrates with, resells, supplies and funds whom - is the same analysis as a policy
+arena with different actor types and different relationship types. Both are covered here.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session. Mechanics
 live in `../dcipher-mechanics/references/`.
@@ -30,6 +34,8 @@ the full set and let them cut:
 | Actor type | Why they matter | Usually forgotten? |
 |---|---|---|
 | Companies and incumbents | commercial power | no |
+| Partners, resellers, integrators | route to market, lock-in | often |
+| Suppliers and sub-tier providers | dependency, leverage | often |
 | Startups and challengers | direction of travel | sometimes |
 | Regulators and agencies | rule-setting power | no |
 | Legislators and political actors | agenda-setting | often |
@@ -41,8 +47,13 @@ the full set and let them cut:
 | Media and named journalists | amplification | usually |
 | Individuals - experts, activists, executives | disproportionate influence | usually |
 
-**The relationship types that matter.** Funds, partners with, supplies, regulates, lobbies
-against, sits on the board of, co-publishes with, publicly supports or opposes.
+**The relationship types that matter.** Commercial: partners with, integrates with,
+resells, supplies, competes with, has an exclusive with, invests in. Institutional: funds,
+regulates, lobbies against, sits on the board of, co-publishes with, is a member of,
+publicly supports or opposes.
+
+For a partner ecosystem the commercial set is the analysis; for a policy arena the
+institutional set is. Most real arenas need both.
 
 **Purpose.** Coalition building, influence strategy, risk mapping, or market entry. This
 decides what you record about each actor.

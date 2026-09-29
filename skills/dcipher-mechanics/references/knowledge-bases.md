@@ -1,7 +1,7 @@
 # Building knowledge bases
 
-A knowledge base (KB) is a structured, semantically indexed text dataset. Four
-constructors, four completely different input shapes. All four are asynchronous: they
+A knowledge base (KB) is a structured, semantically indexed text dataset. Three
+constructors, three completely different input shapes. All three are asynchronous: they
 return a `flowId`, and the KB materialises later.
 
 ## Choosing a constructor
@@ -11,10 +11,33 @@ return a `flowId`, and the KB materialises later.
 | News (200k+ global sources, Opoint) | `create_news_kb` | horizon scanning, narrative monitoring, industry news | last **365 days** only |
 | Social (Netfeedr) | `create_social_kb` | voice of customer, sentiment, community discussion | roughly last **30 days** |
 | Research agents (web/news via search) | `create_research_agent_kb` | desk research, entity lists, filings, government and academic sources | none, but slow at scale |
-| Uploaded files | `create_file_kb` | internal documents, transcripts, reports | PDF **or** DOCX per call, no scheduling |
 
-If the user has both internal documents and external signal, build two KBs and attach
-both to one project. Do not try to merge them into a single KB.
+Several sources can be built as separate KBs and attached to one project. Do not try to
+merge different source types into a single KB.
+
+## No file upload
+
+**These tools cannot ingest the user's own documents.** There is no constructor for
+uploaded PDFs, Word files or spreadsheets, so support-ticket exports, survey response
+files, interview transcripts, data-room extracts and internal reports cannot be analysed
+through this interface.
+
+Establish this **before** framing a piece of work around a customer's own material, not
+after. A user who says "analyse these 400 support tickets" needs to hear that this cannot
+be done here, in the first exchange.
+
+What can still be done when the material is the user's own:
+
+- **Find the public counterpart.** Product reviews, community and forum discussion, and
+  media coverage reach much of what an internal corpus would show, from the outside.
+- **Research the question instead of the documents.** A research-agent task can often
+  answer what the user wanted the documents to answer.
+- **Point them at the Studio UI.** File-based datasets may be available through the
+  product directly even when these tools cannot create them - say so rather than
+  pretending the capability does not exist anywhere.
+
+Report `sheets` and `sheetInputs` reference uploaded spreadsheet files, so they are
+unavailable for the same reason. Build report sections from knowledge-base `inputs`.
 
 ## Getting the search terms right
 
@@ -110,20 +133,6 @@ Worked example:
 }
 ```
 
-## `create_file_kb`
-
-```
-get_file_upload_url  ->  PUT the bytes to the returned url  ->  get_file_by_name (confirm)
-create_file_kb { kbName, files: [ { name: "q3-report.pdf" } ] }
-```
-
-All files in one call must share an extension - all `.pdf` or all `.docx`. The output
-schema is fixed (`Text` + `Source`), so file KBs carry **no timestamps and no metadata**:
-no bump chart, no growth analysis, no date filter. If the user wants feedback trended over
-time, the dates have to arrive some other way. Say this early rather than after the build.
-
-`list_files` shows what is already uploaded.
-
 ## Scheduling
 
 Omit `schedule` for a one-time fetch. Pass it to stand up a self-refreshing flow: the
@@ -143,8 +152,7 @@ means a weekly run that each time pulls the last month. Use overlap deliberately
 recall, but tell the user their document counts will overlap between runs.
 
 Scheduling is the right default for monitoring deliverables (competitor tracking,
-narrative monitoring, regulatory watch) and wrong for one-off questions. File KBs cannot
-be scheduled.
+narrative monitoring, regulatory watch) and wrong for one-off questions.
 
 ## Polling
 

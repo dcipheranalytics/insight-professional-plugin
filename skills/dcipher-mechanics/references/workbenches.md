@@ -172,7 +172,14 @@ A working one:
 The "say nothing when there is nothing" clause is what stops a matrix from filling every
 cell with plausible fiction. Never omit it.
 
-`engine` must be one of the enumerated identifiers - see `reports.md`.
+`engine` must be a live identifier from <https://api.dciphernext.com/llm-engines> carrying
+**`aiGeneratedReportSupported: true`** - matrix cells draw on the same engine set as
+AI-generated report sections. Fetch the list rather than guessing; see the Engines section
+of `reports.md` for the full selection procedure.
+
+Matrix cells are generated one per cell, so engine cost scales with rows x columns. Check
+`costTier` before running a 20 x 8 matrix on a high-tier engine - that is 160 generations,
+not one.
 
 ## Scenario
 

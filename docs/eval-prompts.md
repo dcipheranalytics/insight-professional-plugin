@@ -76,6 +76,41 @@ Expected skill in brackets. The ambiguous set at the end is the real test.
 - "Brief me on this client before tomorrow's QBR"
 - "Flag any of our accounts showing churn risk signals"
 
+**Portfolio** [`monitoring-portfolio-companies`]
+- "What's happened across our portfolio this quarter?"
+- "Anything I should flag to the investment committee?"
+- "Monitor our grantees and tell me about delivery issues"
+
+**Counterparty risk** [`screening-counterparty-risk`]
+- "Screen these 30 suppliers for controversies"
+- "Any adverse media on these companies?"
+- "Check our partners for ESG and human rights issues"
+
+**Supply chain** [`monitoring-supply-chain-risk`]
+- "What could disrupt our supply of these components?"
+- "Where are we single-sourced?"
+- "Set up a disruption watch on our critical suppliers"
+
+**Country risk** [`assessing-country-risk`]
+- "How risky is it to operate in these five markets?"
+- "We're considering opening a plant in Vietnam - what's the risk picture?"
+
+**Funding** [`mapping-funding-landscapes`]
+- "Who funds research in this area?"
+- "Find grant opportunities we're eligible for"
+- "How have funder priorities shifted in climate adaptation?"
+
+**Research landscape** [`mapping-research-landscapes`]
+- "What does the research field on solid-state electrolytes look like?"
+- "Which institutions lead each research front here?"
+- "Map this science area and show me where it's thin"
+
+**Generic layer** [`analyzing-content-themes` / `tracking-organisation-signals` / `screening-entities-against-criteria`]
+- "I have 5,000 open-ended survey responses - what's in them?"
+- "Analyse these documents and tell me the themes"
+- "Track these organisations for me"  (no relationship stated - should route or ask)
+- "Screen these against our criteria"
+
 **Query** [`querying-knowledge-bases`]
 - "What does our data say about hydrogen pricing?"
 - "Find documents in the Q3 project mentioning Northvolt"
@@ -102,6 +137,10 @@ question. Record which fires. Disagreement here is what the description clauses 
 - "Tell me everything about Northvolt"
 - "Map this space"
 - "Track these companies for me"  (rivals? customers? unstated - should ask)
+- "Monitor these companies"  (competitors / customers / portfolio - three-way collision)
+- "Any risks with these suppliers?"  (conduct vs continuity - two skills)
+- "Map the ecosystem"  (partner ecosystem vs policy arena vs market structure)
+- "Research this field"  (research landscape vs tech scouting vs emerging trends)
 
 ## Quality tests
 

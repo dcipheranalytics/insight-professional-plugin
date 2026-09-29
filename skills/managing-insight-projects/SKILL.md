@@ -16,7 +16,6 @@ get_insight_booster(id)                    # detail, workbenches, config
 list_insight_booster_knowledge_bases(id)   # what data is attached
 list_archived_insight_boosters
 list_knowledge_bases({ nameContains })     # org-wide KBs, and which projects use them
-list_files
 list_insight_booster_report_templates(...) / list_owned_insight_booster_report_templates
 ```
 

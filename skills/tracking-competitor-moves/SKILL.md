@@ -1,6 +1,6 @@
 ---
 name: tracking-competitor-moves
-description: Tracks a named set of competitors against event triggers - funding, product launches, leadership changes, M&A, partnerships, patents, regulatory action - and produces a competitor-by-trigger matrix or event digest in Dcipher Insight Booster. Use when the user names specific rival companies and wants to know what they have been doing, or wants ongoing monitoring of known competitors. Use tracking-customer-accounts instead when the named companies are customers or prospects rather than rivals, screening-acquisition-targets when the companies are unknown and must be found, mapping-market-landscapes when the subject is a market or segment rather than named firms, running-due-diligence when the user needs depth on one company rather than comparison across several, and monitoring-narratives when they want how competitors are covered rather than what they did.
+description: Tracks a named set of competitors against event triggers - funding, product launches, leadership changes, M&A, partnerships, patents, regulatory action - and produces a competitor-by-trigger matrix or event digest in Dcipher Insight Booster. Use when the user names specific rival companies and wants to know what they have been doing, or wants ongoing monitoring of known competitors. Use tracking-customer-accounts instead when the named companies are customers or prospects, monitoring-portfolio-companies when they are holdings or investees, screening-acquisition-targets when the companies are unknown and must be found, mapping-market-landscapes when the subject is a market rather than named firms, running-due-diligence when the user needs depth on one company, and monitoring-narratives when they want how competitors are covered rather than what they did.
 ---
 
 # Tracking competitor moves
@@ -8,8 +8,11 @@ description: Tracks a named set of competitors against event triggers - funding,
 You are a competitive intelligence analyst. The deliverable is a competitor-by-trigger
 matrix that a strategy team can read in five minutes and act on, refreshed on a cadence.
 
-Read `../dcipher-mechanics/references/analyst-standards.md` once before your first
-delivery in a session. Mechanics live in `../dcipher-mechanics/references/`.
+The build is `tracking-organisation-signals` - read it for the method. This file covers
+what is specific to competitors: the trigger set, the reading, and the deliverable.
+
+Read `../dcipher-mechanics/references/analyst-standards.md` once per session. Mechanics
+live in `../dcipher-mechanics/references/`.
 
 ## Frame the scan
 
@@ -78,7 +81,7 @@ update_insight_booster_matrix_workbench_config({
   id, workbenchId,
   rowVariable: "$row", columnVariable: "$column",
   instruction: "Summarise $row's activity in $column over the last 12 months using only the attached sources. Give at most three concrete items, each with its date and source. Prefer primary sources. If the sources contain no significant activity of this type, write 'No significant activity identified' - do not infer activity from adjacent or unrelated news.",
-  engine: "gpt-5.5",
+  engine: "<a report-capable engine - fetch https://api.dciphernext.com/llm-engines>",
   rows: [{ value: "Company A" }, ...],
   columns: [{ value: "Funding and investment" }, ...],
   summarizeRows: true, summarizeColumns: true

@@ -1,6 +1,6 @@
 ---
 name: screening-acquisition-targets
-description: Builds a screened longlist of acquisition, investment or partnership targets in Dcipher against explicit criteria, researches each candidate in parallel and scores them on a criteria matrix. Use for corporate development, M&A sourcing, investment screening and partner-selection work where the candidate companies are not yet known and need to be found and filtered. Use running-due-diligence instead when the target is already chosen and needs investigating in depth, tracking-competitor-moves when the companies are already named and the user wants ongoing monitoring of their activity, and mapping-market-landscapes when the goal is understanding a market's structure rather than producing a ranked target list.
+description: Builds a screened longlist of acquisition, investment or partnership targets in Dcipher against explicit criteria, researches each candidate in parallel and scores them on a criteria matrix. Use for corporate development, M&A sourcing, investment screening and partner-selection work where the candidate companies are not yet known and need to be found and filtered. Use screening-entities-against-criteria instead when the entities are not acquisition candidates, screening-counterparty-risk when the criteria are risk and controversy dimensions, running-due-diligence when the target is already chosen and needs investigating in depth, and tracking-competitor-moves when the companies are already named and the user wants ongoing monitoring.
 ---
 
 # Screening acquisition targets
@@ -8,6 +8,10 @@ description: Builds a screened longlist of acquisition, investment or partnershi
 You are a corporate development analyst. The deliverable is a longlist of candidates
 scored against the client's stated criteria, with the evidence behind each score and an
 explicit note on what could not be verified.
+
+The build is `screening-entities-against-criteria` - read it for the method, including
+the four-level scoring scale and the universe caveat. This file covers what is specific to
+acquisition and investment screening.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session. Mechanics
 live in `../dcipher-mechanics/references/`.

@@ -32,7 +32,7 @@ no defaults; omitting one is a validation error.
 id                      stable, preserved across updates
 title                   heading in the output
 inputs                  KB ids this section retrieves from
-sheetInputs             ids of attached xls/xlsx sheets ([] if none)
+sheetInputs             ids of attached xls/xlsx sheets - pass [], see below
 viewInputs              view ids scoping which documents are eligible ([] if none)
 instruction             the prompt for this section
 exampleOutput           format/tone exemplar ("" if none)
@@ -41,9 +41,9 @@ includeReferences       bool
 queryOptimization       bool - beta, optimises retrieval
 longContextMode         bool - more source material per section
 agenticRag              bool - beta; an agent decides retrieval. OVERRIDES queryOptimization,
-                        orderSensitive, mode and outputMode; needs a RAG-capable engine;
-                        incompatible with sheetInputs
-engine                  see the enum below
+                        orderSensitive, mode and outputMode; needs an engine with
+                        ragAgentSupported: true; incompatible with sheetInputs
+engine                  see Engines below - fetch the live list, do not guess
 mode                    Creative | Balanced | Precise
 orderSensitive          bool - prioritise `inputs` in listed order
 outputMode              regular | comparison
@@ -52,23 +52,50 @@ outputMode              regular | comparison
 Report-level: `defaultStyle`, `executiveSummary`, `inlineCitations`,
 `contentDistributionOptimization`, `generatePodcast` (beta), `variables`, `sheets`.
 
+`sheets` and `sheetInputs` attach uploaded spreadsheet files, which cannot be uploaded
+through these tools - pass `sheets: []` and `sheetInputs: []` and source every section from
+knowledge-base `inputs` instead.
+
 `variables` are `$`-prefixed placeholders substituted into instructions and styles - the
 mechanism that makes a template reusable across clients, periods or segments. Define
 `$client`, `$period`, `$market` once rather than editing ten instructions.
 
 ### Engines
 
-`gpt-5.6-sol`, `gpt-5.6-terra`, `gpt-5.6-luna`, `gpt-5.5`, `gpt-5.4`, `gpt-5.2`,
-`gpt-5.1`, `gpt-5`, `gpt-5.4-mini`, `gpt-5.4-nano`, `gpt-5-mini`, `gpt-5-nano`, `gpt-4.1`,
-`gpt-4.1-mini`, `gpt-4.1-nano`, `gpt4-128k-omni`, `gpt4-128k-omni-mini`,
-`cohere-command-r-plus`, `cohere-command-r`, `gemini-pro`, `gemini-flash-lite`,
-`gemini-flash`, `claude-fable`, `claude-opus`, `claude-sonnet`, `claude-haiku`,
-`google/gemma-4-31B-it`, `meta-llama/Llama-3.1-8B-Instruct`, `Qwen/Qwen3.5-9B`,
-`Qwen/Qwen3.5-27B`.
+**The authoritative list is <https://api.dciphernext.com/llm-engines>.** Fetch it rather
+than working from memory or from any list written down in this repository - engines are
+added, deprecated and renamed, and a stale identifier is rejected outright.
 
-Pick from this list verbatim; a free-typed model name is rejected. Use a frontier engine
-for analytical sections and a small one for mechanical extraction if cost matters. Do not
-mix engines within a report without reason - the voice shifts noticeably between sections.
+The response has an `engines` array; each entry carries the identifier in `engine` plus
+capability flags. The ones that matter:
+
+| Field | Use it for |
+|---|---|
+| `aiGeneratedReportSupported` | **Report sections and matrix cells both require `true`.** A hard filter - not every accepted engine can generate them. |
+| `ragAgentSupported` | Required when a section sets `agenticRag: true`. A much smaller set than the report-capable one. |
+| `costTier` | `high` or `low` - the cost decision, without doing arithmetic on unit costs |
+| `generatorMaxTokens` | Context size. Relevant when a section sets `longContextMode` or draws on a large corpus |
+| `deprecationDate` | Present on engines being retired. Do not select one for a report that will be re-run on a schedule |
+| `aliases` | Alternative identifiers the API also accepts |
+| `label`, `provider` | What to call it when telling the user which engine you picked |
+
+So the selection procedure is: fetch the list, filter to
+`aiGeneratedReportSupported: true`, filter again to `ragAgentSupported: true` if the
+section uses agentic RAG, drop anything carrying a `deprecationDate`, then choose on
+`costTier` and `generatorMaxTokens`.
+
+**The same procedure governs the matrix `engine` field** - matrix cells use the
+report-capable engine set. Agentic RAG does not apply there, so the second filter is only
+ever a report concern.
+
+**If you cannot reach the endpoint**, do not guess an identifier. Read the engine already
+configured on the workbench or template with `get_insight_booster_workbench` and reuse it,
+or ask the user. A rejected engine fails the whole section.
+
+Judgement, once the list is filtered: a high-tier engine for analytical and synthesis
+sections, a low-tier one for mechanical extraction where cost matters. Do not mix engines
+within a report without a reason - the voice shifts noticeably between sections, and
+readers notice it before they notice the analysis.
 
 ### Writing section instructions
 

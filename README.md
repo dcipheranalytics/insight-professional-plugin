@@ -18,11 +18,26 @@ Siemens been up to"), not an identity and not a visualisation preference, so des
 key on the observable task. The role positioning lives in the SKILL.md body, where it
 shapes the output voice without hurting trigger accuracy.
 
-Shared machinery - project setup, KB construction, filters, workbench configuration,
-report generation - lives once in `skills/dcipher-mechanics/references/` rather than being
-restated in every skill. Use-case skills point at it with a relative path.
+The plugin is three layers. **Tool mechanics** - project setup, KB construction, filters,
+workbench configuration, report generation - live once in
+`skills/dcipher-mechanics/references/`. **Analytical method** - the recurring patterns
+behind whole families of deliverables - lives in three generic skills. **Role-mapped
+skills** reference both and add the framing, the defaults, the judgement and the reading
+that make a deliverable specific to a subrole. Nothing is restated twice, so nothing
+drifts.
 
 ## Skills
+
+### Generic method skills
+
+Each holds one analytical pattern once. Usable directly when a request is generic;
+referenced by the role-mapped skills for the build.
+
+| Skill | Pattern | Referenced by |
+|---|---|---|
+| `analyzing-content-themes` | Any text corpus into a theme map, trended | customer voice, narratives, research landscapes |
+| `tracking-organisation-signals` | Named organisations x signals, as a recurring digest | competitors, customer accounts, portfolio, counterparty risk, supply chain |
+| `screening-entities-against-criteria` | Entities scored against criteria, tiered | acquisition targets, counterparty risk, supply chain, country risk |
 
 ### Role-mapped deliverables
 
@@ -41,6 +56,12 @@ restated in every skill. Use-case skills point at it with a relative path.
 | `running-due-diligence` | Diligence / corp dev | Evidence pack on one target, red-flag register | agent KB, news KB, matrix, report |
 | `mapping-stakeholder-ecosystems` | Public affairs / ecosystem | Actor map, position matrix, recurring stakeholder digest | agent KB, news KB, landscape, matrix, bump |
 | `tracking-customer-accounts` | Account intelligence / KAM | Account x signal matrix, pre-meeting brief, account digest | agent KB, scheduled news KB, matrix |
+| `monitoring-portfolio-companies` | PE / VC / DFI portfolio ops | Portfolio x signal matrix, flag list, portfolio digest | agent KB, scheduled news KB, matrix, bump |
+| `screening-counterparty-risk` | Third-party risk / ESG | Controversy register with severity, escalation shortlist | agent KB, news KB, matrix |
+| `monitoring-supply-chain-risk` | Procurement / supply chain | Supplier x risk matrix, concentration analysis, disruption digest | agent KB, scheduled news KB, matrix |
+| `assessing-country-risk` | Enterprise risk / strategy | Country risk brief, jurisdiction x dimension matrix, risk radar | agent KB over jurisdictions, matrix, radar |
+| `mapping-funding-landscapes` | Grants / research development | Funder x topic matrix, opportunity shortlist, priority shift | agent KB over funders, landscape, growth |
+| `mapping-research-landscapes` | Research intelligence / science policy | Research front map, institution positions, white space | agent KB, landscape, growth, matrix |
 
 ### Role-neutral
 

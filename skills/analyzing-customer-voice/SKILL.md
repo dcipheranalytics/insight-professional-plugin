@@ -1,12 +1,16 @@
 ---
 name: analyzing-customer-voice
-description: Analyses customer and user feedback in Dcipher - reviews, support tickets, survey responses, call transcripts, chat logs, community posts and social comments - into themes, complaint clusters, question clusters and issue trends. Use whenever the source material is what customers themselves said, for voice-of-customer, CX insight, churn-driver and product-feedback work. Use monitoring-narratives instead when the interest is media coverage or general social media scanning on a topic rather than customers' own feedback, tracking-customer-accounts when the question is what customer organisations are doing rather than what they say, and querying-knowledge-bases when the feedback is already in a Dcipher project and the user just wants a question answered.
+description: Analyses what customers say in public using Dcipher - reviews, app-store feedback, community and forum discussion, and social comments - into themes, complaint clusters, question clusters and issue trends, benchmarked against competitors. Use for voice-of-customer, review and community mining, CX insight, churn-signal and product-feedback work. Note that customers' own files - support tickets, survey exports, call transcripts - cannot be ingested by these tools, so say so early when a request assumes them. Use analyzing-content-themes instead when the corpus is not customer feedback, monitoring-narratives when the interest is media coverage or topic-level social scanning, tracking-customer-accounts when the question is what customer organisations are doing rather than what they say, and querying-knowledge-bases when the material is already in a project.
 ---
 
 # Analyzing customer voice
 
 You are a customer insight analyst. The deliverable is a theme and complaint map that a
 product or CX team can prioritise against - not a sentiment score.
+
+The build is `analyzing-content-themes` - read it for the corpus-to-themes method. This
+file covers what is specific to customer feedback: the sources, their biases, and how to
+prioritise what comes out.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session. Mechanics
 live in `../dcipher-mechanics/references/`.
@@ -21,18 +25,27 @@ source, name its bias in the deliverable.
 **Which decision.** "Understand our customers" produces a word cloud. "Decide what to fix
 next quarter" produces a prioritised complaint map. Ask.
 
-**Whether time matters.** If the user wants "is this getting better or worse", the source
-documents need timestamps - and **file KBs have none**. Establish this before building,
-because it changes the sourcing.
+**What is actually reachable.** This is the first thing to settle, and it disappoints
+people. These tools build corpora from social media, community discussion, reviews and the
+public web. **They cannot ingest the user's own files** - no support-ticket exports, no
+survey response files, no call transcripts, no chat logs.
+
+Say this in the first exchange, before any project exists. A user who opens with "analyse
+these 400 tickets" must not be led through scoping to find out at build time. Then offer
+the substitution below, which is usually still worth doing.
 
 ## Sources, and what each is good for
 
 | Source | Tool | Strength | Bias |
 |---|---|---|---|
-| Support tickets, transcripts, survey exports (PDF/DOCX) | `create_file_kb` | specific, actionable, already yours | only people who contacted you; **no timestamps** |
-| Reviews and community posts | `create_social_kb` or research agents | unprompted, comparative | polarised; ~30-day social retention |
-| Social comments (YouTube, Instagram, X, Facebook) | `create_social_kb` | volume, early signal | noisy, often off-topic |
-| Competitor reviews | research agents | shows what you are being compared against | secondary |
+| Reviews on public sites and app stores | research agents | unprompted, comparative, specific | polarised - the delighted and the furious |
+| Community and forum discussion | research agents | where real problems get described at length | self-selected, technical skew |
+| Social comments (YouTube, Instagram, X, Facebook) | `create_social_kb` | volume, early signal | noisy; roughly 30-day retention |
+| Media coverage of the product or category | `create_news_kb` | third-party framing | not customers |
+| Competitor reviews and community | research agents | the comparison customers actually make | secondary |
+
+Note the omission: the user's own tickets, surveys and transcripts are not on this list and
+cannot be. Everything here is what customers said **in public**.
 
 Two moves that lift the analysis above the brief almost every time:
 
@@ -40,13 +53,17 @@ Two moves that lift the analysis above the brief almost every time:
    alternative. A research-agent KB over competitor reviews, attached to the same project
    and colour-separated on the landscape, turns "customers dislike our onboarding" into
    "customers dislike our onboarding and say so twice as often as for the two rivals".
-2. **Add the channel the user forgot.** They will bring reviews; the actionable material
-   is usually in support tickets and churn interviews. Ask for them.
+   With internal channels unavailable, this is now the single strongest move in the skill.
+2. **Go where the detail is.** Star ratings carry little; forum threads, long-form reviews
+   and support communities carry the specifics. Target those explicitly in the research
+   task rather than sampling review sites broadly.
 
 ## Build
 
-**1. Files.** `get_file_upload_url` -> PUT -> `get_file_by_name` -> `create_file_kb`.
-One extension per call. If dates matter and the files have none, say so now.
+**1. Sources.** A research-agent KB over review sites, communities and forums for the
+product and its main alternatives, plus a social KB where the audience is actually on
+social. Write the platforms and the product names into the research task - a generic
+"research customer opinion" task returns marketing copy.
 
 **2. Project and schema.** Attach, then `fetch_project_metadata_schema`. If the export
 carries product line, plan tier, region or NPS score as metadata, that is what makes the
@@ -102,9 +119,10 @@ complaints and usually map straight to documentation or onboarding gaps. Pull th
 
 ## Push back on
 
-- Trending feedback over time from a file KB. No timestamps, no trend.
-- Generalising about "customers" from a review-site corpus without naming the selection
-  bias.
+- Any brief that assumes the customer's own tickets, surveys or transcripts can be loaded.
+- Generalising about "customers" from a public corpus without naming the selection bias.
+  This matters more now than it used to: with internal channels unavailable, every finding
+  rests on people who chose to post in public, who are not the customer base.
 - A theme resting on a handful of documents presented as a finding.
 - Sentiment scoring as the deliverable when the user actually needs to decide what to fix.
 

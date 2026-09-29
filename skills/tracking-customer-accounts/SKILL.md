@@ -1,6 +1,6 @@
 ---
 name: tracking-customer-accounts
-description: Tracks a named set of customer accounts, prospects or key clients in Dcipher against commercially meaningful signals - leadership changes, funding, expansion, M&A, restructuring, new initiatives, procurement activity and risk events - and produces an account-by-signal matrix, a pre-meeting brief or a recurring account digest. Use for account intelligence, key-account management, customer mapping and tracking, client portfolio monitoring, pre-meeting and QBR preparation, and expansion or churn-risk signal spotting. Use tracking-competitor-moves instead when the named companies are rivals rather than customers, analyzing-customer-voice when the question is what customers say rather than what their organisations are doing, running-due-diligence when one account needs deep investigation rather than ongoing tracking, and screening-acquisition-targets when the goal is finding new companies rather than tracking known ones.
+description: Tracks a named set of customer accounts, prospects or key clients in Dcipher against commercially meaningful signals - leadership changes, funding, expansion, M&A, restructuring, new initiatives, procurement activity and risk events - and produces an account-by-signal matrix, a pre-meeting brief or a recurring account digest. Use for account intelligence, key-account management, customer mapping and tracking, client portfolio monitoring, pre-meeting and QBR preparation, and expansion or churn-risk signal spotting. Use tracking-competitor-moves instead when the named companies are rivals, monitoring-portfolio-companies when they are investments rather than customers, analyzing-customer-voice when the question is what customers say rather than what their organisations are doing, and running-due-diligence when one account needs deep investigation.
 ---
 
 # Tracking customer accounts
@@ -8,6 +8,9 @@ description: Tracks a named set of customer accounts, prospects or key clients i
 You are an account intelligence analyst. The deliverable is a signal digest across a named
 client portfolio - what changed at each account, what it means commercially, and who should
 act on it this week.
+
+The build is `tracking-organisation-signals` - read it for the method. This file covers
+what is specific to accounts: the signal set, the commercial reading, and the audience.
 
 Read `../dcipher-mechanics/references/analyst-standards.md` once per session. Mechanics
 live in `../dcipher-mechanics/references/`.
