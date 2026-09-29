@@ -41,6 +41,9 @@ landscape over the sector, or run an enumeration task:
 }
 ```
 
+Set `excludeEmptyResults: false` on this and the profiling run, otherwise a candidate the
+agent found nothing for vanishes instead of appearing as Unknown.
+
 Then de-duplicate and show the user the list before researching it. Be explicit that a
 derived universe skews towards entities with a public footprint - genuinely quiet ones are
 missing, and in fragmented sectors that can be most of them.

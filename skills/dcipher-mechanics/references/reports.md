@@ -112,6 +112,12 @@ research-agent KB produce a far better report than both sections reading everyth
 Instructions carry the same anti-hallucination clause as matrix cells: say what to do when
 the sources are silent.
 
+Keep style and tone out of `instruction`; put them in `style` or `defaultStyle`, and use
+`exampleOutput` to show the shape wanted. Put a "/" in a `title` to make a subsection under
+the part before it. `outputMode: "comparison"` needs at least two KBs in `inputs`. With
+`orderSensitive`, list the KB that should dominate first. Generate one section on its own
+and read it before firing the full report.
+
 ## Templates and recurrence
 
 ```

@@ -98,6 +98,9 @@ fell. Only when the corpus has enough history.
   be small. Say which.
 - **Read the segments, not just the bubbles.** An empty or thin sector says the client's
   taxonomy has a blind spot, or the corpus does.
+- **Do not drop the periphery.** The landscape removes small semantic clusters by default,
+  and weak signals live there. Set `outlierPolicy: "never"` before reading it for early
+  signals.
 - **Trace back to sources.** Every trend you report gets a URL from the bubble's
   `references`. A trend with no traceable source is a generated label.
 

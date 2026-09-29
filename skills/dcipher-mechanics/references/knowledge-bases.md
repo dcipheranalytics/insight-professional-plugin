@@ -78,6 +78,21 @@ built on an English-only corpus is a defect, not a limitation. Either set
 `params.language` to the market's languages, or say plainly in the answer that the view is
 English-language media only.
 
+**Beware false friends.** A keyword can mean different things across languages (Swedish
+"gift" is poison or married). Set `params.language` before trusting keyword hits in a
+multilingual set, and prefer phrases to single words.
+
+**`params.location` is a filter, not a tag.** On social, posts without country metadata are
+dropped when a country is set, so the corpus shrinks silently. Say so when a country-scoped
+social KB is thinner than expected.
+
+**A `limit` below the number of matches returns a slice, not a random sample.** Posts come
+back most recent first by default, so a low limit on a busy topic covers only the latest
+days. Raise the limit or narrow the window rather than reading a thin slice as the whole.
+
+There is no exclusion field (`params` takes `any` only). Handle noise afterwards with a
+metadata or semantic filter, or by deleting off-topic clusters, and say that you did.
+
 Pass `insightBoosterId` when you already have the project - it saves an attach step and
 keeps scheduled runs linked automatically.
 
@@ -121,6 +136,16 @@ schedule / insightBoosterId / summarization as above
   attach an attribute to each entity: two aligned variables, such as `actor` and
   `actor_type`, give every document both fields, so a landscape can be coloured by type.
   Reference both placeholders in the task.
+- **Rows the agent finds nothing for are dropped by default** (`excludeEmptyResults` is on).
+  When the deliverable needs to show which entities came back empty - screening, entity
+  lists, due diligence - set it to `false`, or an entity with no evidence is
+  indistinguishable from one you never asked about.
+- **Mostly empty run?** Retry with `thirdPartyScrapingEnabled: true` (routes scraping
+  through third-party services; higher success on sites that block direct scraping) before
+  concluding the sources are silent. It is off by default.
+- `enableExtensiveSearch` finds more and is noticeably slower per run; leave it off unless
+  the user wants depth over speed, or a pilot on five came back thin. For a long run,
+  `sendEmailNotification: true` tells the user when it finishes.
 - **Watch the run count.** The cross-product grows fast. Before firing 200 runs, tell the
   user the size and confirm.
 

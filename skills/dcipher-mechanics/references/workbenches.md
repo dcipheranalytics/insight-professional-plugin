@@ -66,7 +66,8 @@ language selector empty. This applies to the landscape, radar and scenario confi
 source, region, or sentiment and the map answers "who is talking about what", not just
 "what is being talked about".
 
-`outlierPolicy: "always"` for a noisy news corpus, `"never"` when the periphery is the
+Semantic outlier removal is on by default and drops small clusters, which are exactly where
+weak signals sit. `outlierPolicy: "always"` for a noisy news corpus, `"never"` when the periphery is the
 interesting part (weak signals, early-stage technologies).
 
 **Broadness** is a read-time parameter, not a config field. Call
@@ -130,6 +131,9 @@ reading the chart.
 time bucket behind `momentum` and `volume`. Weekly suits a news corpus watched over months;
 quarterly suits a slower research corpus.
 
+With `approach` set to predefined sectors, name each in under ten words; longer names clutter
+the chart. `enableAdditionalSegments` decides whether AI-found sectors appear beside yours.
+
 Phrase axis definitions as the client's decision criterion, not as a generic metric.
 "Impact on society" is a template; "Threat to our aftermarket service revenue" is an
 analysis.
@@ -159,6 +163,12 @@ Configured through the UI config: `period` (`daily` up to `biennial`) and `broad
 `growths` and `volumes` keyed by time bucket; pass `broadness_level` explicitly rather than
 relying on the default of 1.
 
+Growth compares only the **last two periods**: "annual" sets the two most recent 12-month
+periods against each other, "monthly" the last two months. Say which pair when you report a
+rate. Topics above the breakout level are new, with no earlier period to compare against,
+so their growth is undefined and not large. Needs a date field. The available periods
+depend on how long the corpus runs.
+
 Read growth and volume together. A topic can double from two documents to four; that is
 not a trend. Filter on `size` or `volumes` before reporting a growth rate.
 
@@ -176,7 +186,10 @@ rows/columns   [ { value, instruction?, inputs?, viewInputs? } ]
 
 `value` is the header label and the substitution value. Per-row/column `instruction`
 overrides the matrix-level one; `inputs` (KB ids) and `viewInputs` (view ids) scope which
-documents that row or column may draw on.
+documents that row or column may draw on. Use this to cross sources in one matrix, for
+example rows fed by the research-agent KB and columns by the news KB. Per-row/column
+overrides go on one axis only. An empty cell means the sources held nothing relevant, which
+is a finding, not a failure.
 
 `contentDistributionOptimization: "rows" | "columns"` prioritises content along that axis.
 `summarizeRows` / `summarizeColumns` generate footer summaries - cheap, and usually the

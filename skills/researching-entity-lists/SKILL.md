@@ -69,6 +69,9 @@ hardest cases - the smallest, the least-documented, the non-English one. Read th
 with `sample_kb`. Fix the task. Then run the full list. A bad task discovered at entity 5
 costs minutes; discovered at entity 200 it costs the whole run.
 
+**Keep empty rows visible.** `excludeEmptyResults` is on by default and drops entities the
+agent found nothing for. Set it to `false` when the user needs to see which came back empty.
+
 **4. Wait and verify.** `wait_for_flow(flowId)` until done, then `sample_kb`
 across several entities, not one. Check specifically that entities differ from each other -
 near-identical rows mean the agent is reasoning from general knowledge rather than
